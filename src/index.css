@@ -1,0 +1,33 @@
+:root {
+    --primary-color: #6880FF;
+    --background-main: #FDFDFD;
+    --content: #121212;
+    --background-secondary: #F3F3F3;
+    --rounded: 0.5rem;
+}
+
+[data-theme="dark"] {
+    --primary-color: #5772FF;
+    --background-main: #121212;
+    --content: rgb(255, 255, 255, 0.87);
+    --background-secondary: #202020;
+}
+
+body {
+    overflow: hidden;
+    margin: 0 2rem;
+    box-sizing: border-box;
+    font-family: "Satoshi Variable";
+
+}
+
+#app {
+    background-color: var(--background-main);
+    color: var(--content);
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        margin: 0;
+    }
+}

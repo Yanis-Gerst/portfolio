@@ -1,0 +1,9 @@
+.btn {
+    background: var(--primary-color);
+    padding: 1rem 0.75rem;
+    border-radius: var(--rounded);
+    font-weight: bold;
+    color: var(--background-main);
+    outline: none;
+    border: none;
+}
