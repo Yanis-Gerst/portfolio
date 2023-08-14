@@ -1,0 +1,32 @@
+#about {
+    margin-top: 13.5rem;
+}
+
+#about h1, #about p {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.about__localisation {
+    margin-bottom: 1rem;
+}
+
+
+@media screen and (min-width: 1280px) {
+    #about {
+        max-width: 980px;
+        display: flex;
+        gap: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 23.75rem;
+    }
+
+    #about h1 {
+        font-size: 4rem;
+    }
+
+    .about__text {
+        max-width: 450px;
+    }
+}

@@ -1,0 +1,82 @@
+@import "../../styles/button.css";
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.personal-mail-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.divider {
+    display: block;
+    height: 2px;
+    width: 30%;
+    margin-bottom: 1.5rem;
+    background-color: #000000;
+    max-width: 180px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+input, textarea {
+    background-color: var(--background-secondary);
+    border-radius: var(--rounded);
+    padding: .5rem 0.75rem;
+    border: none;
+    outline: none;
+}
+
+textarea {
+    min-height: 150px;
+    resize: none;
+}
+
+button {
+    margin-top: .5rem;
+    width: 30vw;
+    max-width: 180px;
+}
+
+p {
+    margin: 0;
+}
+
+@media screen and (min-width: 1280px) {
+    .contact {
+        max-width: 980px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    form .form__input-wrapper {
+        flex-basis: calc(50% - 0.75rem);
+    }
+
+    form .form__input-wrapper:last-of-type {
+        flex-basis: 100%;
+    }
+
+}
+

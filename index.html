@@ -6,14 +6,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerst__Yanis--Portfolio</title>
     <link rel="stylesheet" href="src/index.css">
+    <script defer src="https://smtpjs.com/v3/smtp.js"></script>
     <script defer type="module" src="/src/main.ts"></script>
   </head>
   <body>
     <div id="app">
-      <custom-button text="See my work"></custom-button>
       <custom-header></custom-header>
-      <custom-tags text="NextJs"></custom-tags>
+      <div class="desktop--hero-full-page">
+
+      <section id="hero-header">
+        <div class="hero__content">
+          <div class="hero__text">
+            <h1>Hi, I'm Yanis</h1>
+              <h1>Front-end Developer</h1>
+              <p>Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+            </div>
+          <div class="hero__cta">
+            <button class="btn">See my work</button>
+            <button class="btn--secondary">Contact Me</button>
+          </div>
+        </div>
+        <div class="hero__illustration">
+          <img src="src/assets/hero-illustration.gif" alt="Illustration of web design">
+        </div>
+      </section>
+
+        <div class="scroll-arrow hidden-on-mobile">
+          <img src="src/assets/DownArrow.svg" alt="An arrow that invite you to scroll">
+        </div>
+      </div>
+
+      <section id="about">
+        <div class="about__text">
+         <h1>About me</h1>
+         <p>Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </div>
+        <div class="about__r-side-desk">
+          <div class="by-theme-img about__localisation">
+            <img class="hidden-on-dark" src ="src/assets/ThingsClone-dark.png" alt="Image of my web version of Things 3 in Light Mode">
+            <img class="hidden-on-light" src ="src/assets/ThingsClone-light.png" alt="Image of my web version of Things 3 in Dark Mode">
+          </div>
+
+          <div class="social-link-wrapper">
+            <a href="https://github.com/Yanis-Gerst" class="social-link social-link--github">
+              <img src="src/assets/GithubIcon.svg" alt="link into my github account">
+            </a>
+
+            <a href="https://github.com/Yanis-Gerst" class="social-link social--link--linkedin">
+              <img src="src/assets/LinkedinIcon.svg" alt="link into my LinkedIn account">
+            </a>
+          </div>
+        </div>
+      </section>
+
+    <section id="project">
+
+        <template id="project-template">
+          <div class="project">
+            <div class="project__r-side-desk">
+              <a class="project__link"> <slot name="title"></slot><svg width="10" height="10" viewBox="0 0 10 10" fill="" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 9L9 1M9 1H3.66667M9 1V6.33333" stroke="#121212"/>
+              </svg>
+              </a>
+              <slot name="intro-paragraph"></slot>
+              <slot name="tags-list"></slot>
+            </div>
+            <div class="project__img">
+              <slot name="image"></slot>
+            </div>
+
+          </div>
+
+
+        </template>
+
+        <my-project>
+          <h1 slot="title" class="project__title" >Web Clone of Things 3</h1>
+          <p slot="intro-paragraph" class="project__intro">Authentique clone de l’application Things 3 étant disponible uniquement dans l’app store</p>
+          <img slot="image" src="src/assets/ThingsClone-light.png" class="hidden-on-dark" alt="test">
+          <img slot="image" src="src/assets/ThingsClone-dark.png" class="hidden-on-light" alt="test">
+          <ul slot="tags-list" class="tag-wrapper">
+            <li class="tag">Next.Js</li>
+            <li class="tag">Typescript</li>
+            <li class="tag">Sass</li>
+            <li class="tag">MongoDB</li>
+          </ul>
+        </my-project>
+
+      <my-project>
+        <h1 slot="title" class="project__title" >Student Drive Platform</h1>
+        <p slot="intro-paragraph" class="project__intro">Un Drive dédié aux étudiant d’AMU afin de partager fiches de révisions, exercices et corrections</p>
+        <img slot="image" src="src/assets/studentDrive.png" alt="test">
+        <ul slot="tags-list" class="tag-wrapper">
+          <li class="tag">Next.Js</li>
+          <li class="tag">Typescript</li>
+          <li class="tag">Sass</li>
+          <li class="tag">MongoDB</li>
+        </ul>
+      </my-project>
+
+      <my-project>
+        <h1 slot="title" class="project__title" >Pizza Legend</h1>
+        <p slot="intro-paragraph" class="project__intro">Mon premier projet basée sur le travail de Drew Conley. Je me suis amusée à rajouter des fonctionnalités et crée ma petite histoire</p>
+        <img slot="image" src="src/assets/pizzaLegend.png" alt="test">
+        <ul slot="tags-list" class="tag-wrapper">
+          <li class="tag">HTML</li>
+          <li class="tag">CSS</li>
+          <li class="tag">VanillaJs</li>
+        </ul>
+      </my-project>
+
+      </section>
+
+
+      <contact-form></contact-form>
+      <custom-footer></custom-footer>
     </div>
+
+
 
   </body>
 </html>

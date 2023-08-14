@@ -1,0 +1,40 @@
+.btn, .btn--secondary {
+    padding: .75rem 1rem;
+    border-radius: var(--rounded);
+    font-weight: bold;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn {
+    background: var(--primary-color);
+    color: var(--background-main);
+
+
+}
+
+.btn--secondary {
+    position: relative;
+    border: 1px solid var(--content);
+    overflow: hidden;
+}
+
+.btn--secondary::after {
+    content: "";
+    height: 102%;
+    left: -10%;
+    position: absolute;
+    top: 0;
+    transform: skewX(20deg);
+    transition: width 0.5s ease-out;
+    width: 0;
+    background-color: #FFF;
+    mix-blend-mode: difference;
+}
+
+.btn--secondary:hover::after {
+    width: 120%;
+}
+

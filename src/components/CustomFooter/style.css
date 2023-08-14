@@ -1,0 +1,30 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin-top: 7rem;
+}
+
+.footer__social-link-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+p {
+    margin: 0;
+
+}
+
+@media screen and (min-width: 1280px) {
+    footer {
+        margin-top: 8rem;
+        max-width: 980px;
+        margin-left:auto ;
+        margin-right: auto;
+
+    }
+
+
+}

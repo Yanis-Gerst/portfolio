@@ -52,7 +52,7 @@ a {
     color: var(--content);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
     .wrapper {
         padding-right: 4rem;
         padding-top: 1rem;

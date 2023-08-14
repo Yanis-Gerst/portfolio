@@ -1,3 +1,10 @@
+@import "styles/button.css";
+@import "styles/tags.css";
+@import "styles/socialLink.css";
+@import "styles/hero-header.css";
+@import "styles/about.css";
+@import "styles/projects.css";
+
 :root {
     --primary-color: #6880FF;
     --background-main: #FDFDFD;
@@ -6,28 +13,65 @@
     --rounded: 0.5rem;
 }
 
+/*
 [data-theme="dark"] {
     --primary-color: #5772FF;
     --background-main: #121212;
     --content: rgb(255, 255, 255, 0.87);
     --background-secondary: #202020;
 }
+*/
+
+h1 {
+    font-weight: bold;
+    font-size: 35px;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+[data-theme="dark"] .hidden-on-dark {
+    display: none;
+}
+
+[data-theme="light"] .hidden-on-light {
+    display: none;
+}
 
 body {
-    overflow: hidden;
-    margin: 0 2rem;
+    overflow-x: hidden;
     box-sizing: border-box;
-    font-family: "Satoshi Variable";
-
-}
-
-#app {
+    font-family: "Satoshi Variable", serif;
+    font-size: 16px;
+    margin: 0;
     background-color: var(--background-main);
     color: var(--content);
+
 }
 
-@media screen and (min-width: 1024px) {
-    body {
-        margin: 0;
+
+#app {
+
+    max-width: 345px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1280px) {
+    .hidden-on-mobile {
+        display: none;
     }
 }
+
+@media screen and (min-width: 1280px) {
+
+    #app {
+        max-width: 1200px;
+    }
+}
+
+
+
+

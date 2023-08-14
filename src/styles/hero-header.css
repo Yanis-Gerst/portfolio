@@ -1,0 +1,66 @@
+
+#hero-header h1:last-of-type {
+    margin-bottom: .5rem;
+}
+
+#hero-header p {
+    margin-bottom: 1.5rem;
+}
+
+.hero__cta {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+.hero__illustration img {
+    width: 100%;
+}
+
+section {
+    margin-bottom: 13.5rem;
+}
+
+
+@media screen and (min-width: 1280px) {
+    #hero-header {
+        display: flex;
+        gap: 8rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #hero-header h1 {
+        font-size: 3rem;
+    }
+
+
+    .hero__content {
+        max-width: 480px;
+    }
+
+    .hero__cta {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .hero__cta button {
+        flex-basis: 50%;
+    }
+
+    .desktop--hero-full-page {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .scroll-arrow {
+        width: min-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

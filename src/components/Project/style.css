@@ -1,0 +1,80 @@
+
+.project {
+    margin-bottom: 8rem;
+}
+
+::slotted(img) {
+    width: 100%;
+}
+
+#project-template ::slotted(h1){
+    font-size: 2rem !important;
+    margin-bottom: .5rem !important;
+}
+
+::slotted(p)  {
+    margin-bottom: 1rem !important;
+}
+
+.project .tag-wrapper {
+    margin-bottom: 1.5rem;
+
+}
+
+.project__link {
+    display: flex;
+    gap: 0.25rem;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.project__link svg {
+    width: 8px;
+    height: 8px;
+    transform: translateY(-100%);
+    transition: transform .3s ease-out;
+}
+
+.project__link:hover {
+    color: var(--primary-color);
+}
+
+.project__link:hover svg {
+    transform: translateY(-200%) translateX(2px);
+}
+.project__link:hover path {
+    stroke: var(--primary-color);
+}
+
+
+
+@media screen and (min-width: 1280px) {
+    #project {
+        display: flex;
+        flex-direction: column;
+        max-width: 980px;
+        gap: 8rem;
+        margin: 0 auto;
+    }
+    .project {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 4rem;
+    }
+
+    .project__r-side-desk {
+        max-width: 350px;
+    }
+
+    .project p {
+        margin-bottom: 1.5rem;
+    }
+
+    .project__img {
+        max-width: 580px;
+    }
+
+    .project .tag-wrapper {
+        margin-bottom: 0;
+    }
+}

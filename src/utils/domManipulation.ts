@@ -12,6 +12,8 @@ export const createElementWithAttribute = <
   const configKeys = Object.keys(config) as (keyof HTMLElementConfig<K>)[];
   configKeys.forEach((key) => {
     // @ts-ignore
+    if (config[key] === undefined) return;
+    // @ts-ignore
     element[key] = config[key];
   });
   return element;
