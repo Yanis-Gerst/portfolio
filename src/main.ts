@@ -2,6 +2,8 @@ import CustomHeader from "./components/CustomHeader/Custom-header.ts";
 import CustomFooter from "./components/CustomFooter/CustomFooter.ts";
 import ContactForm from "./components/ContactForm/ContactForm.ts";
 import Project from "./components/Project/Project.ts";
+import { setupParallax } from "./script/parallax.ts";
+import { renderMap } from "./components/Maps/maps.ts";
 
 customElements.define("custom-header", CustomHeader);
 customElements.define("custom-footer", CustomFooter);
@@ -20,4 +22,20 @@ const setThemeOfApp = () => {
   app.setAttribute("data-theme", "light");
 };
 
+const hiddenScrollArrowOnScroll = () => {
+  window.addEventListener("scroll", () => {
+    const scrollArrow = document.querySelector(
+      ".scroll-arrow",
+    ) as HTMLDivElement;
+    if (window.scrollY > 100) {
+      scrollArrow.style.opacity = "0";
+      return;
+    }
+    scrollArrow.style.opacity = "1";
+  });
+};
+
 setThemeOfApp();
+hiddenScrollArrowOnScroll();
+setupParallax();
+renderMap();

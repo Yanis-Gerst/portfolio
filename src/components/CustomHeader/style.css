@@ -1,9 +1,16 @@
 .wrapper {
-    margin-top: 1rem;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(253, 253, 253, 0.6), rgba(253, 253, 253, 0.4) 100%);
+    z-index: 100;
 }
 
+.header__logo {
+    font-family: "Clash Display Variable";
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 .wrapper__hamburger {
     z-index: 2;
 }
@@ -52,11 +59,14 @@ a {
     color: var(--content);
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1050px) {
     .wrapper {
-        padding-right: 4rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        position: fixed;
+        max-width: 1008px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
     }
 
     .wrapper__navs {
@@ -64,6 +74,10 @@ a {
     }
 
     .wrapper__hamburger {
+        display: none;
+    }
+
+    .wrapper__hamburger-menu {
         display: none;
     }
 

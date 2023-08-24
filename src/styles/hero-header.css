@@ -1,4 +1,10 @@
 
+#hero-header {
+    position: relative;
+}
+
+
+
 #hero-header h1:last-of-type {
     margin-bottom: .5rem;
 }
@@ -13,8 +19,32 @@
     flex-direction: column;
 }
 
+.hero__cta button {
+    width: 100%;
+}
+
 .hero__illustration img {
     width: 100%;
+}
+
+.hero__decoration {
+    position: absolute;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: red;
+}
+
+#hero-header > div:nth-last-of-type(2) {
+    bottom: -5rem;
+    left: 1rem;
+
+}
+
+#hero-header > div:last-of-type {
+    bottom: -3rem;
+    right: 35%;
+    transform: translateY(175%);
 }
 
 section {
@@ -22,13 +52,16 @@ section {
 }
 
 
-@media screen and (min-width: 1280px) {
+
+
+
+@media screen and (min-width: 1050px) {
     #hero-header {
         display: flex;
         gap: 8rem;
         align-items: center;
         justify-content: center;
-        margin-top: 8rem;
+        margin-top: 12rem;
         margin-left: auto;
         margin-right: auto;
     }
@@ -47,12 +80,13 @@ section {
         gap: 1rem;
     }
 
-    .hero__cta button {
+    .hero__cta a {
         flex-basis: 50%;
     }
 
+
     .desktop--hero-full-page {
-        height: 80vh;
+        height: 95vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -62,5 +96,27 @@ section {
         width: min-content;
         margin-left: auto;
         margin-right: auto;
+        transition: opacity .3s ease-out;
     }
+
+    .scroll-arrow path {
+        animation: bouncyArrow 2s linear forwards infinite;
+        animation-delay: 800ms;
+
+    }
+
+    .scroll-arrow .down-arrow__main-line {
+    }
+}
+
+@keyframes bouncyArrow {
+    10% {
+        transform: scaleY(130%);
+
+    }
+    20% {
+        transform: scaleY(120%);
+    }
+
+
 }

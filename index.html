@@ -22,17 +22,25 @@
               <p>Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
             </div>
           <div class="hero__cta">
-            <button class="btn">See my work</button>
-            <button class="btn--secondary">Contact Me</button>
+            <a href="#project"> <button class="btn">See my work</button></a>
+            <a href="#contact"><button class="btn--secondary"><span>Contact Me</span></button></a>
           </div>
         </div>
         <div class="hero__illustration">
           <img src="src/assets/hero-illustration.gif" alt="Illustration of web design">
         </div>
+        <div class="hero__decoration"></div>
+        <div class="hero__decoration"></div>
       </section>
 
         <div class="scroll-arrow hidden-on-mobile">
-          <img src="src/assets/DownArrow.svg" alt="An arrow that invite you to scroll">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4V25.3333M16" class="down-arrow__main-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 25.3333L21.3333 20M16" class="down-arrow__left-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 20M16 25.3333L10.6666 20" class="down_arrow__right-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+
+          </svg>
+
         </div>
       </div>
 
@@ -42,10 +50,7 @@
          <p>Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
         </div>
         <div class="about__r-side-desk">
-          <div class="by-theme-img about__localisation">
-            <img class="hidden-on-dark" src ="src/assets/ThingsClone-dark.png" alt="Image of my web version of Things 3 in Light Mode">
-            <img class="hidden-on-light" src ="src/assets/ThingsClone-light.png" alt="Image of my web version of Things 3 in Dark Mode">
-          </div>
+          <div id="google_map"></div>
 
           <div class="social-link-wrapper">
             <a href="https://github.com/Yanis-Gerst" class="social-link social-link--github">
@@ -60,7 +65,6 @@
       </section>
 
     <section id="project">
-
         <template id="project-template">
           <div class="project">
             <div class="project__r-side-desk">
@@ -68,8 +72,8 @@
                 <path d="M1 9L9 1M9 1H3.66667M9 1V6.33333" stroke="#121212"/>
               </svg>
               </a>
-              <slot name="intro-paragraph"></slot>
-              <slot name="tags-list"></slot>
+              <div class="intro-paragraph-wrapper"> <slot name="intro-paragraph"></slot></div>
+              <div class="tags-list-wrapper"><slot name="tags-list"></slot></div>
             </div>
             <div class="project__img">
               <slot name="image"></slot>
@@ -88,7 +92,8 @@
           <ul slot="tags-list" class="tag-wrapper">
             <li class="tag">Next.Js</li>
             <li class="tag">Typescript</li>
-            <li class="tag">Sass</li>
+            <li class="tag">TailwindCSS</li>
+            <li class="tag">Golang</li>
             <li class="tag">MongoDB</li>
           </ul>
         </my-project>
@@ -118,8 +123,10 @@
 
       </section>
 
+      <section id="contact">
+        <contact-form></contact-form>
+      </section>
 
-      <contact-form></contact-form>
       <custom-footer></custom-footer>
     </div>
 

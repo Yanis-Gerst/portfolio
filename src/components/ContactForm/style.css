@@ -56,7 +56,7 @@ p {
     margin: 0;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1050px) {
     .contact {
         max-width: 980px;
         margin-left: auto;

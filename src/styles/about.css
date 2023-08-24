@@ -11,8 +11,18 @@
     margin-bottom: 1rem;
 }
 
+#google_map {
+    max-width: 340px;
+    height: 170px;
+    margin-bottom: 1rem;
+    border-radius: var(--rounded);
+}
 
-@media screen and (min-width: 1280px) {
+.gmnoprint, .gm-style-cc {
+    display: none;
+}
+
+@media screen and (min-width: 1050px) {
     #about {
         max-width: 980px;
         display: flex;
@@ -28,5 +38,10 @@
 
     .about__text {
         max-width: 450px;
+    }
+
+    #google_map {
+        min-width: 500px;
+        height: 245px;
     }
 }

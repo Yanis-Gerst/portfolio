@@ -10,7 +10,27 @@ export default class Project extends HTMLElement {
       "#project-template",
     ) as HTMLTemplateElement;
     this.shadow.appendChild(template.content.cloneNode(true));
+    this.handleAnimation();
   }
 
-  render() {}
+  handleAnimation() {
+    const project = this.shadow.querySelector(".project");
+    if (!project) throw new Error("Can't find project element");
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (
+          entry.isIntersecting &&
+          !entry.target.classList.contains("project--visible")
+        ) {
+          entry.target.classList.add("project--visible");
+          return;
+        }
+      });
+    };
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+    });
+
+    observer.observe(project);
+  }
 }

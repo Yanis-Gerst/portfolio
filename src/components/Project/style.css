@@ -1,19 +1,24 @@
 
 .project {
     margin-bottom: 8rem;
+    opacity: 0;
+}
+
+.project--visible {
+    opacity: 1;
 }
 
 ::slotted(img) {
     width: 100%;
 }
 
-#project-template ::slotted(h1){
-    font-size: 2rem !important;
-    margin-bottom: .5rem !important;
+#project-template a{
+    font-size: 2rem ;
+    margin-bottom: .5rem;
 }
 
-::slotted(p)  {
-    margin-bottom: 1rem !important;
+.intro-paragraph-wrapper  {
+    margin-bottom: 1rem;
 }
 
 .project .tag-wrapper {
@@ -46,9 +51,32 @@
     stroke: var(--primary-color);
 }
 
+.project--visible .project__link {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.project--visible .intro-paragraph-wrapper {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    animation-delay: 150ms;
+}
+
+.project--visible .tags-list-wrapper {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    animation-delay: 200ms;
+}
+
+.project--visible .project__img {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    animation-delay: 250ms;
+}
 
 
-@media screen and (min-width: 1280px) {
+
+@media screen and (min-width: 1050px) {
     #project {
         display: flex;
         flex-direction: column;
@@ -76,5 +104,28 @@
 
     .project .tag-wrapper {
         margin-bottom: 0;
+    }
+
+    .project--visible .project__link {
+        animation-delay: 150ms;
+    }
+
+    .project--visible .intro-paragraph-wrapper {
+        animation-delay: 200ms;
+    }
+
+    .project--visible .tags-list-wrapper {
+        animation-delay: 250ms;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
