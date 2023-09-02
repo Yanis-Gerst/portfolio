@@ -14,7 +14,10 @@ footer {
 
 p {
     margin: 0;
+}
 
+svg path {
+    fill: var(--content)
 }
 
 @media screen and (min-width: 1280px) {

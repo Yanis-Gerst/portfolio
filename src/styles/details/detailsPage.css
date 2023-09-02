@@ -1,0 +1,42 @@
+@import "project-intro.css";
+
+#app {
+    max-width: calc(600px - 1.5rem);
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 8rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.project__tags-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#project-header {
+    position: relative;
+}
+
+.project__tags p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#project-header {
+    margin-top: calc(2.5rem + 62px);
+}
+
+#features img {
+    width: 100%;
+}

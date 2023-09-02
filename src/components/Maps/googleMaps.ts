@@ -1,6 +1,107 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
 import { GeographicPosition, IMaps, IMarker, Themes } from "./types.ts";
+import { getReverseTheme } from "../../script/theme.ts";
+
+export class GoogleMaps implements IMaps {
+  divId: string;
+  divElement: HTMLElement;
+  position: GeographicPosition;
+  theme: Themes;
+  marker?: IMarker;
+  static APIKEY = "AIzaSyAUDYHMzE-6z-TRTNtUrCYv7wjm23qO2Wg";
+  map: google.maps.Map | null;
+  constructor(config: Omit<IMaps, "setup">) {
+    this.divId = config.divId;
+    this.divElement = this.getDivIdElement();
+    this.position = config.position;
+    this.theme = config.theme;
+    this.marker = config.marker;
+    this.map = null;
+  }
+
+  private getDivIdElement() {
+    const divIdElement = document.getElementById(this.divId);
+    if (!divIdElement) throw Error(`Don't find element of id: ${this.divId}`);
+    return divIdElement;
+  }
+  async setup() {
+    const loader = new Loader({
+      apiKey: GoogleMaps.APIKEY,
+      version: "weekly",
+    });
+
+    const { Map } = await loader.importLibrary("maps");
+
+    this.map = new Map(this.divElement, this.getMapOptions());
+
+    const customMarker = this.createCustomMarker();
+
+    new google.maps.Marker({
+      position:
+        this.marker?.position === "center"
+          ? this.position
+          : this.marker?.position,
+      map: this.map,
+      icon: customMarker,
+    });
+
+    this.handleZoom();
+    this.handleChangingTheme();
+  }
+
+  private getMapOptions(): google.maps.MapOptions {
+    return {
+      center: this.position,
+      zoom: 12,
+      mapTypeControl: false,
+      fullscreenControl: false,
+      zoomControl: false,
+      streetViewControl: false,
+      scrollwheel: false,
+      styles: googleMapsTheme[this.theme],
+    };
+  }
+
+  private createCustomMarker() {
+    if (!this.marker) return null;
+    const anchorPosition = this.marker.anchor;
+
+    const customMarker: google.maps.Icon = {
+      url: this.marker.url,
+      anchor: new google.maps.Point(anchorPosition.x, anchorPosition.y),
+      size: new google.maps.Size(256, 256),
+      scaledSize: new google.maps.Size(64, 64),
+    };
+    return customMarker;
+  }
+
+  private handleZoom() {
+    this.divElement.addEventListener("wheel", (event: WheelEvent) => {
+      const zoomLevel = this.map?.getZoom();
+      if (!zoomLevel) throw Error("Map Can't zoom or map is not defined");
+
+      if (event.deltaY && event.deltaY < 0) {
+        this.map?.setZoom(zoomLevel + 1);
+      } else {
+        this.map?.setZoom(zoomLevel - 1);
+      }
+
+      event.preventDefault();
+    });
+  }
+
+  private handleChangingTheme = () => {
+    window.addEventListener("theme-change", () => {
+      this.switchTheme();
+      this.map?.setOptions(this.getMapOptions());
+    });
+  };
+
+  private switchTheme(): void {
+    this.theme = getReverseTheme(this.theme);
+  }
+}
 
 const lightMapStyle: google.maps.MapTypeStyle[] = [
   {
@@ -223,86 +324,197 @@ const lightMapStyle: google.maps.MapTypeStyle[] = [
     ],
   },
 ];
+const darkMapStyle: google.maps.MapTypeStyle[] = [
+  {
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#212121",
+      },
+    ],
+  },
+  {
+    elementType: "labels.icon",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#757575",
+      },
+    ],
+  },
+  {
+    elementType: "labels.text.stroke",
+    stylers: [
+      {
+        color: "#212121",
+      },
+    ],
+  },
+  {
+    featureType: "administrative",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#757575",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.country",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#9e9e9e",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.land_parcel",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.locality",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#bdbdbd",
+      },
+    ],
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#757575",
+      },
+    ],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#181818",
+      },
+    ],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#616161",
+      },
+    ],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.text.stroke",
+    stylers: [
+      {
+        color: "#1b1b1b",
+      },
+    ],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#2c2c2c",
+      },
+    ],
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#8a8a8a",
+      },
+    ],
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#373737",
+      },
+    ],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#3c3c3c",
+      },
+    ],
+  },
+  {
+    featureType: "road.highway.controlled_access",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#4e4e4e",
+      },
+    ],
+  },
+  {
+    featureType: "road.local",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#616161",
+      },
+    ],
+  },
+  {
+    featureType: "transit",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#757575",
+      },
+    ],
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [
+      {
+        color: "#000000",
+      },
+    ],
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#3d3d3d",
+      },
+    ],
+  },
+];
 
-export class GoogleMaps implements IMaps {
-  divId: string;
-  divElement: HTMLElement;
-  position: GeographicPosition;
-  theme: Themes;
-  marker?: IMarker;
-  static APIKEY = "AIzaSyAUDYHMzE-6z-TRTNtUrCYv7wjm23qO2Wg";
-  constructor(config: Omit<IMaps, "setup">) {
-    this.divId = config.divId;
-    this.divElement = this.getDivIdElement();
-    this.position = config.position;
-    this.theme = config.theme;
-    this.marker = config.marker;
-  }
-
-  async setup() {
-    const loader = new Loader({
-      apiKey: GoogleMaps.APIKEY,
-      version: "weekly",
-    });
-
-    const { Map } = await loader.importLibrary("maps");
-
-    const mapOptions: google.maps.MapOptions = {
-      center: this.position,
-      zoom: 12,
-      mapTypeControl: false,
-      fullscreenControl: false,
-      zoomControl: false,
-      streetViewControl: false,
-      scrollwheel: false,
-      styles: lightMapStyle,
-    };
-
-    const map: google.maps.Map = new Map(this.divElement, mapOptions);
-
-    const customMarker = this.createCustomMarker();
-
-    new google.maps.Marker({
-      position:
-        this.marker?.position === "center"
-          ? this.position
-          : this.marker?.position,
-      map,
-      icon: customMarker,
-    });
-
-    this.handleZoom(map);
-  }
-
-  getDivIdElement() {
-    const divIdElement = document.getElementById(this.divId);
-    if (!divIdElement) throw Error(`Don't find element of id: ${this.divId}`);
-    return divIdElement;
-  }
-
-  createCustomMarker() {
-    if (!this.marker) return null;
-    const anchorPosition = this.marker.anchor;
-
-    const customMarker: google.maps.Icon = {
-      url: this.marker.url,
-      anchor: new google.maps.Point(anchorPosition.x, anchorPosition.y),
-    };
-    return customMarker;
-  }
-
-  handleZoom(map: google.maps.Map) {
-    this.divElement.addEventListener("wheel", function (event) {
-      const zoomLevel = map.getZoom();
-      if (!zoomLevel) throw Error("Map Can't zoom");
-
-      if (event.deltaY && event.deltaY < 0) {
-        map.setZoom(zoomLevel + 1);
-      } else {
-        map.setZoom(zoomLevel - 1);
-      }
-
-      event.preventDefault();
-    });
-  }
-}
+type IGoogleMapsTheme = {
+  [key in Themes]: google.maps.MapTypeStyle[];
+};
+const googleMapsTheme: IGoogleMapsTheme = {
+  light: lightMapStyle,
+  dark: darkMapStyle,
+};

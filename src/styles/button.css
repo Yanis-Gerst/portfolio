@@ -20,7 +20,7 @@
 }
 
 .btn:hover {
-    background-color: #3450E0;
+    background-color: var(--accent-primary-color);
 }
 
 .btn--secondary {
@@ -44,7 +44,7 @@
     position: absolute;
     transform: skewX(20deg) translateX(-110%);
     transition: transform .5s ease-out;
-    background-color: #000000;
+    background-color: var(--content);
     z-index: -1;
 }
 

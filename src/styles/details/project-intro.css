@@ -1,0 +1,45 @@
+
+social-link::part(wrapper) {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.social-link::part(wrapper)::slotted(img) {
+    width: 24px;
+    height: 24px;
+}
+
+social-link::part(wrapper)::after {
+    content: none;
+}
+
+.project-intro {
+    margin-bottom: 2rem;
+
+}
+
+.project-intro h1 {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.project-intro a {
+    color: var(--primary-color);
+}
+
+.project-intro p {
+    margin-top: 1rem;
+}
+
+.project-intro img {
+    width: 24px;
+}
+
+theme-button::part(theme-button) {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+

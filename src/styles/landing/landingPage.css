@@ -1,0 +1,39 @@
+@import "about.css";
+@import "hero-header.css";
+@import "projects.css";
+
+
+
+#app {
+    max-width: 345px;
+    margin: 0 auto;
+}
+
+
+[data-theme="light"] custom-header::part(wrapper) {
+    background: linear-gradient(180deg, rgba(253, 253, 253, 0.6), rgba(253, 253, 253, 0.4) 100%);
+}
+
+[data-theme="dark"] custom-header::part(wrapper) {
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.6) 0%, rgba(18, 18, 18, 0.4) 100%);
+}
+
+[data-theme="light"] my-project::part(img-dark) {
+    display: none;
+}
+
+[data-theme="dark"] my-project::part(img-light) {
+    display: none;
+}
+
+.social-link-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+
+@media screen and (min-width: 1050px) {
+    #app {
+        max-width: 1200px;
+    }
+}

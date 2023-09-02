@@ -1,0 +1,7 @@
+[data-theme="dark"] .hidden-on-dark {
+    display: none;
+}
+
+[data-theme="light"] .hidden-on-light {
+    display: none;
+}

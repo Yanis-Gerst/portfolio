@@ -1,3 +1,19 @@
+@import "src/styles/tags.css";
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+}
+
+p {
+    margin: 0
+}
 
 .project {
     margin-bottom: 8rem;
@@ -8,16 +24,16 @@
     opacity: 1;
 }
 
-::slotted(img) {
+img {
     width: 100%;
 }
 
-#project-template a{
-    font-size: 2rem ;
+#project-template a {
+    font-size: 2rem;
     margin-bottom: .5rem;
 }
 
-.intro-paragraph-wrapper  {
+.intro-paragraph-wrapper {
     margin-bottom: 1rem;
 }
 
@@ -47,6 +63,7 @@
 .project__link:hover svg {
     transform: translateY(-200%) translateX(2px);
 }
+
 .project__link:hover path {
     stroke: var(--primary-color);
 }
@@ -62,7 +79,7 @@
     animation-delay: 150ms;
 }
 
-.project--visible .tags-list-wrapper {
+.project--visible .tags-list {
     opacity: 0;
     animation: fadeIn 0.3s forwards;
     animation-delay: 200ms;
@@ -75,6 +92,15 @@
 }
 
 
+.project__intro {
+    margin-bottom: 1rem;
+}
+
+
+svg path {
+    stroke: var(--content);
+}
+
 
 @media screen and (min-width: 1050px) {
     #project {
@@ -84,6 +110,7 @@
         gap: 8rem;
         margin: 0 auto;
     }
+
     .project {
         display: flex;
         flex-direction: row-reverse;
@@ -91,7 +118,7 @@
     }
 
     .project__r-side-desk {
-        max-width: 350px;
+        width: 351px;
     }
 
     .project p {
@@ -99,7 +126,7 @@
     }
 
     .project__img {
-        max-width: 580px;
+        max-width: 560px;
     }
 
     .project .tag-wrapper {
@@ -114,8 +141,12 @@
         animation-delay: 200ms;
     }
 
-    .project--visible .tags-list-wrapper {
+    .project--visible .tags-list {
         animation-delay: 250ms;
+    }
+
+    h1 {
+        font-size: 2rem;
     }
 }
 

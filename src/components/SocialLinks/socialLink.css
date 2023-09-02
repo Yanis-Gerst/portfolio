@@ -1,21 +1,19 @@
-
-.social-link-wrapper {
-    display: flex;
-    gap: 1rem;
+:host {
+    width: 100%;
 }
 
 .social-link {
     display: grid;
     place-items: center;
-    flex-basis: 50%;
     padding: 1rem 0;
     border-radius: var(--rounded);
     position: relative;
+
 }
 
 .social-link::after {
     content: "";
-    background-image: url("../assets/LeftArrow.svg");
+    background-image: url("../../assets/LeftArrow.svg");
     background-color: rgba(0,0,0, 0.2);
     background-position: center;
     background-repeat: no-repeat;
@@ -28,17 +26,12 @@
 
 }
 
-.social-link img {
-    width: 64px;
-    height: 64px;
-    position: relative;
-}
 
 
 .social-link--github {
     background-color: var(--background-secondary);
 }
 
-.social--link--linkedin {
+.social-link--linkedin {
     background-color: #0A66C2;
 }

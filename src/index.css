@@ -1,45 +1,35 @@
 @import "styles/button.css";
 @import "styles/tags.css";
-@import "styles/socialLink.css";
-@import "styles/hero-header.css";
-@import "styles/about.css";
-@import "styles/projects.css";
-
+@import "styles/hiddenTheme.css";
 :root {
-    --primary-color: #6880FF;
-    --background-main: #FDFDFD;
-    --content: #121212;
-    --background-secondary: #F3F3F3;
     --rounded: 0.5rem;
 }
 
-/*
+#app {
+    position: relative;
+}
+
+[data-theme="light"] {
+    --primary-color: #6880FF;
+    --accent-primary-color: #3450E0;
+    --background-main: #FDFDFD;
+    --content: #121212;
+    --secondary-content: #555555;
+    --background-secondary: #F3F3F3;
+}
+
+
 [data-theme="dark"] {
     --primary-color: #5772FF;
+    --accent-primary-color: #568cee;
     --background-main: #121212;
     --content: rgb(255, 255, 255, 0.87);
+    --secondary-content: rgba(211, 211, 211, 0.87);
     --background-secondary: #202020;
 }
-*/
-
-h1 {
-    font-weight: bold;
-    font-size: 35px;
-    margin: 0;
-}
-
-p {
-    margin: 0;
-}
 
 
-[data-theme="dark"] .hidden-on-dark {
-    display: none;
-}
 
-[data-theme="light"] .hidden-on-light {
-    display: none;
-}
 
 html {
     scroll-behavior: smooth;
@@ -53,29 +43,40 @@ body {
     margin: 0;
     background-color: var(--background-main);
     color: var(--content);
-
+    -webkit-font-smoothing: antialiased;
 }
 
 
-#app {
 
-    max-width: 345px;
-    margin: 0 auto;
+h1 {
+    font-weight: bold;
+    font-size: 35px;
+    margin: 0;
 }
+
+p {
+    margin: 0;
+}
+
+.custom-header__hamburger-menu {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: var(--background-secondary);
+    transition: transform 0.3s;
+    transition-timing-function: ease-out;
+    transform: translateX(100%)
+}
+
+.custom-header__hamburger-menu--open {
+    transform: translateX(0%);
+}
+
 
 @media screen and (max-width: 1050px) {
     .hidden-on-mobile {
         display: none;
     }
 }
-
-@media screen and (min-width: 1050px) {
-
-    #app {
-        max-width: 1200px;
-    }
-}
-
-
 
 

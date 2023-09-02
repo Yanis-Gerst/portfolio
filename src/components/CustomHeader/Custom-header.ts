@@ -1,4 +1,3 @@
-import hamburgerIcon from "../../assets/hamburger-menu.svg";
 import {
   createElementWithAttribute,
   createShadowDomWithStyle,
@@ -29,12 +28,15 @@ const navConfigs: INavConfig[] = [
   },
 ];
 
-const openMenuClassName = "wrapper__hamburger-menu--open";
+const hamburgerMenuClassName = "custom-header__hamburger-menu";
+const openMenuClassName = "custom-header__hamburger-menu--open";
 export default class CustomHeader extends HTMLElement {
   open: boolean;
   shadow: ShadowRoot;
   hamburgerMenu: Element | undefined;
   handleBreakpoint: (() => void) | undefined;
+  handleThemeChange: (() => void) | undefined;
+
   constructor() {
     super();
     this.open = false;
@@ -46,8 +48,10 @@ export default class CustomHeader extends HTMLElement {
     const headerWrapper = createElementWithAttribute("header", {
       className: "wrapper",
     });
+    headerWrapper.setAttribute("part", "wrapper");
 
-    const logoContainer = createElementWithAttribute("div", {});
+    const logoContainer = document.createElement("a");
+    logoContainer.href = "/";
     const logo = createElementWithAttribute("h1", {
       className: "header__logo",
     });
@@ -61,14 +65,25 @@ export default class CustomHeader extends HTMLElement {
     });
     this.appendAllNav(navList);
 
-    const hamburgerImg = createElementWithAttribute("img", {
-      src: hamburgerIcon,
-      alt: "open navigation menu",
+    const hamburgerImg = createElementWithAttribute("div", {
       className: "wrapper__hamburger",
     });
 
+    hamburgerImg.innerHTML +=
+      '<svg width="32" height="32" viewBox="0 0 32 32"  xmlns="http://www.w3.org/2000/svg">\n' +
+      '<g id="Hamburger Menu">\n' +
+      '<path id="Top" d="M8 10.6667L24 10.6667" stroke="#121212" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+      '<path id="Mid" d="M8 16L24 16" stroke="#121212" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+      '<path id="Bot" d="M8 21.3333L24 21.3333" stroke="#121212" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+      "</g>\n" +
+      "</svg>\n";
+
     const menuContainer = createElementWithAttribute("div", {
-      className: "wrapper__hamburger-menu",
+      className: hamburgerMenuClassName,
+    });
+
+    const hamburgerMenuNav = createElementWithAttribute("div", {
+      className: "hamburger-menu__nav",
     });
 
     this.shadow.appendChild(headerWrapper);
@@ -76,36 +91,44 @@ export default class CustomHeader extends HTMLElement {
     headerWrapper.appendChild(logoContainer);
     headerWrapper.appendChild(hamburgerImg);
     headerWrapper.appendChild(navContainer);
-    headerWrapper.appendChild(menuContainer);
+
+    createShadowDomWithStyle(menuContainer, style);
+    document.body.appendChild(menuContainer);
 
     navContainer.appendChild(navList);
 
     logoContainer.appendChild(logo);
 
-    menuContainer.appendChild(navContainer.cloneNode(true));
+    menuContainer.shadowRoot?.appendChild(hamburgerMenuNav);
+    hamburgerMenuNav.appendChild(navContainer.cloneNode(true));
     hamburgerImg.addEventListener("click", () => this.handleMenu());
   }
 
   handleMenu() {
-    const hamburgerMenu = this.shadow.querySelector(".wrapper__hamburger-menu");
-    if (!hamburgerMenu) {
+    const wrapper = this.shadow.querySelector(".wrapper") as Element;
+    if (!this.hamburgerMenu) {
       throw Error(
         "Not match found for a hamburger Menu in Custom header Component",
       );
     }
 
     if (this.open) {
-      hamburgerMenu.classList.remove(openMenuClassName);
-      this.open = false;
+      const halfOfTransition = 150;
+      this.closeMenu();
+      setTimeout(
+        () => wrapper.classList.remove(openMenuClassName),
+        halfOfTransition,
+      );
       return;
     }
     this.open = true;
-    hamburgerMenu.classList.add(openMenuClassName);
+    wrapper.classList.add(openMenuClassName);
+    this.hamburgerMenu.classList.add(openMenuClassName);
   }
 
   handleAnchorLink = () => {
     const allAnchors = [
-      ...Array.from(this.shadow.querySelectorAll("a")),
+      ...Array.from(this.shadow.querySelectorAll(".navs__list a")),
       ...Array.from(document.querySelectorAll("a")),
     ];
 
@@ -153,14 +176,23 @@ export default class CustomHeader extends HTMLElement {
   }
 
   closeMenuOnBreakpoint() {
-    if (window.innerWidth != 1024) return;
+    if (window.innerWidth >= 1024) return;
     if (!this.open) return;
     this.closeMenu();
   }
 
+  onThemeChange() {
+    const wrapper = this.shadow.querySelector(".wrapper");
+    if (!wrapper) return;
+    wrapper.classList.add("wrapper--theme-change");
+    wrapper.addEventListener("animationend", () => {
+      wrapper.classList.remove("wrapper--theme-change");
+    });
+  }
+
   connectedCallback() {
-    this.hamburgerMenu = this.shadow.querySelector(
-      ".wrapper__hamburger-menu",
+    this.hamburgerMenu = document.querySelector(
+      `.${hamburgerMenuClassName}`,
     ) as Element;
     if (!this.hamburgerMenu) {
       throw Error(
@@ -169,12 +201,21 @@ export default class CustomHeader extends HTMLElement {
     }
     this.handleAnchorLink();
     this.handleBreakpoint = () => this.closeMenuOnBreakpoint();
+    this.handleThemeChange = () => this.onThemeChange();
     window.addEventListener("resize", this.handleBreakpoint);
+    window.addEventListener("theme-change", this.handleThemeChange);
   }
 
   disconnectedCallback() {
-    if (!this.handleBreakpoint)
+    const menus = document.querySelectorAll(`.${hamburgerMenuClassName}`);
+
+    menus.forEach((elt, index) => {
+      if (index === 0) return;
+      elt.remove();
+    });
+    if (!this.handleBreakpoint || !this.handleThemeChange)
       throw Error("Handle breakpoint function not defined");
     window.removeEventListener("resize", this.handleBreakpoint);
+    window.removeEventListener("theme-change", this.handleThemeChange);
   }
 }

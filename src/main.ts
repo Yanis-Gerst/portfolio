@@ -2,40 +2,19 @@ import CustomHeader from "./components/CustomHeader/Custom-header.ts";
 import CustomFooter from "./components/CustomFooter/CustomFooter.ts";
 import ContactForm from "./components/ContactForm/ContactForm.ts";
 import Project from "./components/Project/Project.ts";
-import { setupParallax } from "./script/parallax.ts";
-import { renderMap } from "./components/Maps/maps.ts";
+import ThemeButton from "./components/ThemeButton/themeButton.ts";
+import socialLink from "./components/SocialLinks/SocialLink.ts";
+import { handleLocation } from "./script/router.ts";
+import { setThemeOfApp } from "./script/theme.ts";
+
+export const appId = "app";
+export type IProjectName = "things" | "pizzaLegend" | "studentPlatform";
 
 customElements.define("custom-header", CustomHeader);
 customElements.define("custom-footer", CustomFooter);
 customElements.define("contact-form", ContactForm);
 customElements.define("my-project", Project);
-const setThemeOfApp = () => {
-  const app = document.querySelector("#app") as Element;
+customElements.define("theme-button", ThemeButton);
+customElements.define("social-link", socialLink);
 
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    app.setAttribute("data-theme", "dark");
-    return;
-  }
-  app.setAttribute("data-theme", "light");
-};
-
-const hiddenScrollArrowOnScroll = () => {
-  window.addEventListener("scroll", () => {
-    const scrollArrow = document.querySelector(
-      ".scroll-arrow",
-    ) as HTMLDivElement;
-    if (window.scrollY > 100) {
-      scrollArrow.style.opacity = "0";
-      return;
-    }
-    scrollArrow.style.opacity = "1";
-  });
-};
-
-setThemeOfApp();
-hiddenScrollArrowOnScroll();
-setupParallax();
-renderMap();
+await handleLocation();

@@ -1,16 +1,126 @@
-import { createShadowDomWithStyle } from "../../utils/domManipulation.ts";
+import {
+  createElementWithAttribute,
+  createShadowDomWithStyle,
+} from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
+import { route } from "../../script/router.ts";
+import { IProjectName } from "../../main.ts";
+import projectData from "../../../data/projectDetails.ts";
+import { getReverseTheme } from "../../script/theme.ts";
+import { kebabize } from "../../utils/utils.ts";
+
+export type IAppImg = { light: string; dark: string } | { all: string };
+type IProjectData = {
+  title: string;
+  resume: string;
+  techTags: string[];
+  appImg: IAppImg;
+};
 export default class Project extends HTMLElement {
   shadow: ShadowRoot;
+  name: IProjectName;
+  projectData: IProjectData;
+  onThemeListener: Function | undefined;
 
   constructor() {
     super();
     this.shadow = createShadowDomWithStyle(this, style);
-    const template = document.querySelector(
-      "#project-template",
-    ) as HTMLTemplateElement;
-    this.shadow.appendChild(template.content.cloneNode(true));
+    this.name = this.getAttribute("name") as IProjectName;
+    this.projectData = this.getProjectData();
+    this.render();
+  }
+
+  render() {
+    const projectDiv = createElementWithAttribute("div", {
+      className: "project",
+    });
+    const rightSideDiv = createElementWithAttribute("div", {
+      className: "project__r-side-desk",
+    });
+
+    const anchorLink = `/${kebabize(this.name)}`;
+    const anchorElt = createElementWithAttribute("a", {
+      className: "project__link",
+      href: anchorLink,
+      toString: anchorLink,
+    });
+    anchorElt.addEventListener("click", route);
+
+    const title = document.createElement("h1");
+    title.textContent = this.projectData.title;
+
+    const arrowSvg =
+      '<svg width="10" height="10" viewBox="0 0 10 10" fill="" xmlns="http://www.w3.org/2000/svg">\n' +
+      '                <path d="M1 9L9 1M9 1H3.66667M9 1V6.33333" stroke="#121212"/>\n' +
+      "              </svg>";
+
+    const paragraphWrapper = createElementWithAttribute("div", {
+      className: "intro-paragraph-wrapper",
+    });
+
+    const resume = document.createElement("p");
+    resume.textContent = this.projectData.resume;
+
+    const tagsListWrapper = this.renderTags();
+
+    const imgWrapper = this.renderImg();
+
+    this.shadow.appendChild(projectDiv);
+    projectDiv.appendChild(rightSideDiv);
+    projectDiv.appendChild(imgWrapper);
+
+    rightSideDiv.appendChild(anchorElt);
+    rightSideDiv.appendChild(paragraphWrapper);
+    rightSideDiv.appendChild(tagsListWrapper);
+
+    anchorElt.appendChild(title);
+    anchorElt.innerHTML += arrowSvg;
+
+    paragraphWrapper.appendChild(resume);
+
     this.handleAnimation();
+  }
+
+  renderTags() {
+    const tagsListWrapper = createElementWithAttribute("ul", {
+      className: "tags-list",
+    });
+
+    this.projectData.techTags.forEach((tagContent) => {
+      const tag = createElementWithAttribute("li", {
+        className: "tag",
+      });
+      tag.textContent = tagContent;
+      tagsListWrapper.appendChild(tag);
+    });
+
+    return tagsListWrapper;
+  }
+
+  renderImg() {
+    const imgWrapper = createElementWithAttribute("div", {
+      className: "project__img",
+    });
+
+    const appImg: IAppImg = this.projectData.appImg;
+    const themes = ["light", "dark"] as const;
+    if (appImg.all) {
+      const img = createElementWithAttribute("img", {
+        src: appImg.all,
+      });
+      imgWrapper.appendChild(img);
+      return imgWrapper;
+    }
+
+    themes.forEach((theme) => {
+      const themeImg = createElementWithAttribute("img", {
+        src: appImg[theme],
+        className: `hidden-on-${getReverseTheme(theme)}`,
+      });
+      themeImg.setAttribute("part", `img-${theme}`);
+      imgWrapper.appendChild(themeImg);
+    });
+    return imgWrapper;
   }
 
   handleAnimation() {
@@ -32,5 +142,16 @@ export default class Project extends HTMLElement {
     });
 
     observer.observe(project);
+  }
+
+  getProjectData(): IProjectData {
+    const project = projectData[this.name];
+
+    return {
+      title: project.title,
+      resume: project.resume,
+      techTags: project.techTags,
+      appImg: project.appImg,
+    };
   }
 }

@@ -1,4 +1,4 @@
-import { IMaps } from "./types.ts";
+import { IMaps, Themes } from "./types.ts";
 import memojiYanis from "../../assets/MemojiYanis.png";
 import { GoogleMaps } from "./googleMaps.ts";
 
@@ -9,13 +9,13 @@ export const renderMap = () => {
       lat: 43.52491,
       lng: 5.45414,
     },
-    theme: "light",
+    theme: document.body.getAttribute("data-theme") as Themes,
     marker: {
       position: "center",
       url: memojiYanis,
       anchor: {
-        x: 46,
-        y: 23,
+        x: 32,
+        y: 16,
       },
     },
   });

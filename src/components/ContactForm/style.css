@@ -17,7 +17,7 @@ h1 {
     height: 2px;
     width: 30%;
     margin-bottom: 1.5rem;
-    background-color: #000000;
+    background-color: var(--content);
     max-width: 180px;
 }
 
@@ -39,6 +39,8 @@ input, textarea {
     padding: .5rem 0.75rem;
     border: none;
     outline: none;
+    color: var(--content);
+    font-family: "Satoshi Variable";
 }
 
 textarea {
@@ -56,6 +58,9 @@ p {
     margin: 0;
 }
 
+svg path {
+    fill: var(--content);
+}
 @media screen and (min-width: 1050px) {
     .contact {
         max-width: 980px;

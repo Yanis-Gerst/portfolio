@@ -9,13 +9,16 @@
     <script defer src="https://smtpjs.com/v3/smtp.js"></script>
     <script defer type="module" src="/src/main.ts"></script>
   </head>
-  <body>
+  <body style="visibility: hidden">
     <div id="app">
       <custom-header></custom-header>
+
       <div class="desktop--hero-full-page">
 
       <section id="hero-header">
+
         <div class="hero__content">
+          <theme-button></theme-button>
           <div class="hero__text">
             <h1>Hi, I'm Yanis</h1>
               <h1>Front-end Developer</h1>
@@ -38,7 +41,6 @@
             <path d="M16 4V25.3333M16" class="down-arrow__main-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16 25.3333L21.3333 20M16" class="down-arrow__left-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16 20M16 25.3333L10.6666 20" class="down_arrow__right-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-
           </svg>
 
         </div>
@@ -53,74 +55,23 @@
           <div id="google_map"></div>
 
           <div class="social-link-wrapper">
-            <a href="https://github.com/Yanis-Gerst" class="social-link social-link--github">
-              <img src="src/assets/GithubIcon.svg" alt="link into my github account">
-            </a>
+            <social-link name="github">
+              <img slot="social-img" src="src/assets/GithubIcon.svg" class="hidden-on-dark" alt="link into my github account">
+              <img slot="social-img" src="src/assets/GithubDarkIcon.svg" class="hidden-on-light" alt="link into my github account">
+            </social-link>
 
-            <a href="https://github.com/Yanis-Gerst" class="social-link social--link--linkedin">
-              <img src="src/assets/LinkedinIcon.svg" alt="link into my LinkedIn account">
-            </a>
+            <social-link name="linkedin">
+              <img slot="social-img" src="src/assets/LinkedinIcon.svg" alt="link into my LinkedIn account">
+            </social-link>
+
           </div>
         </div>
       </section>
 
     <section id="project">
-        <template id="project-template">
-          <div class="project">
-            <div class="project__r-side-desk">
-              <a class="project__link"> <slot name="title"></slot><svg width="10" height="10" viewBox="0 0 10 10" fill="" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 9L9 1M9 1H3.66667M9 1V6.33333" stroke="#121212"/>
-              </svg>
-              </a>
-              <div class="intro-paragraph-wrapper"> <slot name="intro-paragraph"></slot></div>
-              <div class="tags-list-wrapper"><slot name="tags-list"></slot></div>
-            </div>
-            <div class="project__img">
-              <slot name="image"></slot>
-            </div>
-
-          </div>
-
-
-        </template>
-
-        <my-project>
-          <h1 slot="title" class="project__title" >Web Clone of Things 3</h1>
-          <p slot="intro-paragraph" class="project__intro">Authentique clone de l’application Things 3 étant disponible uniquement dans l’app store</p>
-          <img slot="image" src="src/assets/ThingsClone-light.png" class="hidden-on-dark" alt="test">
-          <img slot="image" src="src/assets/ThingsClone-dark.png" class="hidden-on-light" alt="test">
-          <ul slot="tags-list" class="tag-wrapper">
-            <li class="tag">Next.Js</li>
-            <li class="tag">Typescript</li>
-            <li class="tag">TailwindCSS</li>
-            <li class="tag">Golang</li>
-            <li class="tag">MongoDB</li>
-          </ul>
-        </my-project>
-
-      <my-project>
-        <h1 slot="title" class="project__title" >Student Drive Platform</h1>
-        <p slot="intro-paragraph" class="project__intro">Un Drive dédié aux étudiant d’AMU afin de partager fiches de révisions, exercices et corrections</p>
-        <img slot="image" src="src/assets/studentDrive.png" alt="test">
-        <ul slot="tags-list" class="tag-wrapper">
-          <li class="tag">Next.Js</li>
-          <li class="tag">Typescript</li>
-          <li class="tag">Sass</li>
-          <li class="tag">MongoDB</li>
-        </ul>
-      </my-project>
-
-      <my-project>
-        <h1 slot="title" class="project__title" >Pizza Legend</h1>
-        <p slot="intro-paragraph" class="project__intro">Mon premier projet basée sur le travail de Drew Conley. Je me suis amusée à rajouter des fonctionnalités et crée ma petite histoire</p>
-        <img slot="image" src="src/assets/pizzaLegend.png" alt="test">
-        <ul slot="tags-list" class="tag-wrapper">
-          <li class="tag">HTML</li>
-          <li class="tag">CSS</li>
-          <li class="tag">VanillaJs</li>
-        </ul>
-      </my-project>
-
+       <my-project name="things"></my-project>
+      <my-project name="studentPlatform"></my-project>
+      <my-project name="pizzaLegend"></my-project>
       </section>
 
       <section id="contact">

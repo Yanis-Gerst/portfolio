@@ -1,4 +1,4 @@
-.tag-wrapper {
+.tag-wrapper, .tags-list {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
