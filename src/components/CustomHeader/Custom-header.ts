@@ -3,30 +3,11 @@ import {
   createShadowDomWithStyle,
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
-
-type INavConfig = {
-  label: string;
-  scrollTo: string;
-  block: "start" | "center";
-};
-
-const navConfigs: INavConfig[] = [
-  {
-    label: "About",
-    scrollTo: "about",
-    block: "center",
-  },
-  {
-    label: "Work",
-    scrollTo: "project",
-    block: "start",
-  },
-  {
-    label: "Contact",
-    scrollTo: "contact",
-    block: "center",
-  },
-];
+import { HamburgerMenu } from "./hamburgerMenu.ts";
+import {
+  handleAnchorLinksToIdElement,
+  navConfigs,
+} from "../../script/naviguation.ts";
 
 const hamburgerMenuClassName = "custom-header__hamburger-menu";
 const openMenuClassName = "custom-header__hamburger-menu--open";
@@ -34,7 +15,6 @@ export default class CustomHeader extends HTMLElement {
   open: boolean;
   shadow: ShadowRoot;
   hamburgerMenu: Element | undefined;
-  handleBreakpoint: (() => void) | undefined;
   handleThemeChange: (() => void) | undefined;
 
   constructor() {
@@ -78,10 +58,6 @@ export default class CustomHeader extends HTMLElement {
       "</g>\n" +
       "</svg>\n";
 
-    const menuContainer = createElementWithAttribute("div", {
-      className: hamburgerMenuClassName,
-    });
-
     const hamburgerMenuNav = createElementWithAttribute("div", {
       className: "hamburger-menu__nav",
     });
@@ -92,74 +68,22 @@ export default class CustomHeader extends HTMLElement {
     headerWrapper.appendChild(hamburgerImg);
     headerWrapper.appendChild(navContainer);
 
-    createShadowDomWithStyle(menuContainer, style);
-    document.body.appendChild(menuContainer);
-
     navContainer.appendChild(navList);
 
     logoContainer.appendChild(logo);
 
-    menuContainer.shadowRoot?.appendChild(hamburgerMenuNav);
     hamburgerMenuNav.appendChild(navContainer.cloneNode(true));
-    hamburgerImg.addEventListener("click", () => this.handleMenu());
+
+    this.hamburgerMenu = new HamburgerMenu(
+      headerWrapper,
+      hamburgerMenuNav,
+      hamburgerImg,
+      {
+        open: openMenuClassName,
+        base: hamburgerMenuClassName,
+      },
+    );
   }
-
-  handleMenu() {
-    const wrapper = this.shadow.querySelector(".wrapper") as Element;
-    if (!this.hamburgerMenu) {
-      throw Error(
-        "Not match found for a hamburger Menu in Custom header Component",
-      );
-    }
-
-    if (this.open) {
-      const halfOfTransition = 150;
-      this.closeMenu();
-      setTimeout(
-        () => wrapper.classList.remove(openMenuClassName),
-        halfOfTransition,
-      );
-      return;
-    }
-    this.open = true;
-    wrapper.classList.add(openMenuClassName);
-    this.hamburgerMenu.classList.add(openMenuClassName);
-  }
-
-  handleAnchorLink = () => {
-    const allAnchors = [
-      ...Array.from(this.shadow.querySelectorAll(".navs__list a")),
-      ...Array.from(document.querySelectorAll("a")),
-    ];
-
-    allAnchors.forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
-        e.preventDefault();
-        let linkToIdOfElement = anchor.getAttribute("href");
-        if (!linkToIdOfElement) return;
-        linkToIdOfElement = linkToIdOfElement.replace("#", "");
-        const elementToScrollTo = document.getElementById(
-          linkToIdOfElement,
-        ) as HTMLElement;
-        const config = navConfigs.find(
-          (config) => config.scrollTo === linkToIdOfElement,
-        ) as INavConfig;
-
-        if (config.block === "start") {
-          const scrollMargin = 128;
-
-          window.scrollTo({
-            top: elementToScrollTo.offsetTop - scrollMargin,
-          });
-          return;
-        }
-
-        elementToScrollTo?.scrollIntoView({
-          block: config.block,
-        });
-      });
-    });
-  };
 
   appendAllNav(navList: HTMLElement) {
     navConfigs.forEach((navConfig) => {
@@ -168,17 +92,6 @@ export default class CustomHeader extends HTMLElement {
       anchorElement.textContent = navConfig.label;
       navList.appendChild(anchorElement);
     });
-  }
-
-  closeMenu() {
-    this.hamburgerMenu?.classList.remove(openMenuClassName);
-    this.open = false;
-  }
-
-  closeMenuOnBreakpoint() {
-    if (window.innerWidth >= 1024) return;
-    if (!this.open) return;
-    this.closeMenu();
   }
 
   onThemeChange() {
@@ -199,23 +112,19 @@ export default class CustomHeader extends HTMLElement {
         "Not match found for a hamburger Menu in Custom header Component",
       );
     }
-    this.handleAnchorLink();
-    this.handleBreakpoint = () => this.closeMenuOnBreakpoint();
+    const allAnchors = [
+      ...Array.from(this.shadow.querySelectorAll(".navs__list a")),
+      ...Array.from(document.querySelectorAll("a")),
+    ] as HTMLAnchorElement[];
+    handleAnchorLinksToIdElement(allAnchors);
     this.handleThemeChange = () => this.onThemeChange();
-    window.addEventListener("resize", this.handleBreakpoint);
     window.addEventListener("theme-change", this.handleThemeChange);
   }
 
   disconnectedCallback() {
-    const menus = document.querySelectorAll(`.${hamburgerMenuClassName}`);
-
-    menus.forEach((elt, index) => {
-      if (index === 0) return;
-      elt.remove();
-    });
-    if (!this.handleBreakpoint || !this.handleThemeChange)
+    this.hamburgerMenu?.remove();
+    if (!this.handleThemeChange)
       throw Error("Handle breakpoint function not defined");
-    window.removeEventListener("resize", this.handleBreakpoint);
     window.removeEventListener("theme-change", this.handleThemeChange);
   }
 }

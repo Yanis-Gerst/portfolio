@@ -1,6 +1,6 @@
 import { expect } from "vitest";
 import { createElementWithAttribute } from "../../utils/domManipulation.ts";
-import { ThemeButton } from "./themeButton.ts";
+import ThemeButton from "./themeButton.ts";
 import { setThemeOfApp } from "../../script/theme.ts";
 
 Object.defineProperty(window, "matchMedia", {

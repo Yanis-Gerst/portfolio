@@ -1,8 +1,7 @@
-import { IProjectName } from "../main.ts";
 import projectData from "../../data/projectDetails.ts";
-import { createElementWithAttribute } from "../utils/domManipulation.ts";
-import { IAppImg } from "../components/Project/Project.ts";
-import { getReverseTheme } from "./theme.ts";
+import { IAppImg, IProjectName } from "../types/types.ts";
+import { findElementOrThrowError, renderTags } from "../utils/utils.ts";
+import { renderAppImg } from "../utils/renderingMethods.ts";
 
 type IProject = {
   title: string;
@@ -12,9 +11,10 @@ type IProject = {
   techTags: string[];
   libraryTags: string[];
   features: string[];
-  appImg: { light: string; dark: string };
+  appImg: IAppImg;
   goals: string[];
   lesson: string[];
+  spotlight: string[];
 };
 export const renderDetailsPage = (projectName: IProjectName) => {
   const currentProject: IProject = projectData[projectName];
@@ -36,8 +36,12 @@ export const renderDetailsPage = (projectName: IProjectName) => {
   const libraryTagsWrapper =
     findElementOrThrowError<HTMLUListElement>("#library-tags");
 
-  renderTags(libraryTagsWrapper, currentProject.libraryTags);
-
+  if (!renderTags(libraryTagsWrapper, currentProject.libraryTags)) {
+    const projectTagsToRemove = findElementOrThrowError(
+      ".project__tags:last-child",
+    );
+    projectTagsToRemove.remove();
+  }
   renderFeatures(currentProject.features);
 
   const imgWrapper = findElementOrThrowError(".features__img");
@@ -47,18 +51,11 @@ export const renderDetailsPage = (projectName: IProjectName) => {
   const goalsTextWrapper = findElementOrThrowError(".goals__text");
   renderText(goalsTextWrapper, currentProject.goals);
 
+  const spotlightTextWrapper = findElementOrThrowError(".spotlight__text");
+  renderText(spotlightTextWrapper, currentProject.spotlight);
+
   const lessonTextWrapper = findElementOrThrowError("#lesson");
   renderText(lessonTextWrapper, currentProject.lesson);
-};
-
-const renderTags = (wrapper: HTMLUListElement, tagsContents: string[]) => {
-  tagsContents.forEach((tagContent) => {
-    const li = createElementWithAttribute("li", {
-      className: "tag",
-    });
-    li.textContent = tagContent;
-    wrapper.appendChild(li);
-  });
 };
 
 const renderFeatures = (features: string[]) => {
@@ -69,35 +66,6 @@ const renderFeatures = (features: string[]) => {
     li.textContent = feature;
     featuresWrapper.appendChild(li);
   });
-};
-
-const findElementOrThrowError = <T extends HTMLElement>(selector: string) => {
-  const element = document.querySelector(selector) as T;
-  if (!element) {
-    throw new Error(`Element with selector "${selector}" not found.`);
-  }
-  return element;
-};
-
-const renderAppImg = (wrapper: HTMLElement, appImg: IAppImg) => {
-  const themes = ["light", "dark"] as const;
-  if (appImg.all) {
-    const img = createElementWithAttribute("img", {
-      src: appImg.all,
-    });
-    wrapper.appendChild(img);
-    return wrapper;
-  }
-
-  themes.forEach((theme) => {
-    const themeImg = createElementWithAttribute("img", {
-      src: appImg[theme],
-      className: `hidden-on-${getReverseTheme(theme)}`,
-    });
-    themeImg.setAttribute("part", `img-${theme}`);
-    wrapper.appendChild(themeImg);
-  });
-  return wrapper;
 };
 
 const renderText = (wrapper: HTMLElement, texts: string[]) => {

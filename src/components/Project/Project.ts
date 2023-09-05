@@ -4,18 +4,11 @@ import {
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
 import { route } from "../../script/router.ts";
-import { IProjectName } from "../../main.ts";
 import projectData from "../../../data/projectDetails.ts";
-import { getReverseTheme } from "../../script/theme.ts";
-import { kebabize } from "../../utils/utils.ts";
+import { toKebabCase, renderTags } from "../../utils/utils.ts";
+import { IProjectData, IProjectName } from "../../types/types.ts";
+import { renderAppImg } from "../../utils/renderingMethods.ts";
 
-export type IAppImg = { light: string; dark: string } | { all: string };
-type IProjectData = {
-  title: string;
-  resume: string;
-  techTags: string[];
-  appImg: IAppImg;
-};
 export default class Project extends HTMLElement {
   shadow: ShadowRoot;
   name: IProjectName;
@@ -38,13 +31,15 @@ export default class Project extends HTMLElement {
       className: "project__r-side-desk",
     });
 
-    const anchorLink = `/${kebabize(this.name)}`;
+    const anchorLink = `/${toKebabCase(this.name)}`;
     const anchorElt = createElementWithAttribute("a", {
       className: "project__link",
       href: anchorLink,
       toString: anchorLink,
     });
-    anchorElt.addEventListener("click", route);
+    anchorElt.addEventListener("click", (e) =>
+      route(e as MouseEvent & { currentTarget: HTMLAnchorElement }),
+    );
 
     const title = document.createElement("h1");
     title.textContent = this.projectData.title;
@@ -61,9 +56,17 @@ export default class Project extends HTMLElement {
     const resume = document.createElement("p");
     resume.textContent = this.projectData.resume;
 
-    const tagsListWrapper = this.renderTags();
+    const tagsListWrapper = createElementWithAttribute("ul", {
+      className: "tags-list",
+    });
 
-    const imgWrapper = this.renderImg();
+    renderTags(tagsListWrapper, this.projectData.techTags);
+
+    const imgWrapper = createElementWithAttribute("div", {
+      className: "project__img",
+    });
+
+    renderAppImg(imgWrapper, this.projectData.appImg);
 
     this.shadow.appendChild(projectDiv);
     projectDiv.appendChild(rightSideDiv);
@@ -79,48 +82,6 @@ export default class Project extends HTMLElement {
     paragraphWrapper.appendChild(resume);
 
     this.handleAnimation();
-  }
-
-  renderTags() {
-    const tagsListWrapper = createElementWithAttribute("ul", {
-      className: "tags-list",
-    });
-
-    this.projectData.techTags.forEach((tagContent) => {
-      const tag = createElementWithAttribute("li", {
-        className: "tag",
-      });
-      tag.textContent = tagContent;
-      tagsListWrapper.appendChild(tag);
-    });
-
-    return tagsListWrapper;
-  }
-
-  renderImg() {
-    const imgWrapper = createElementWithAttribute("div", {
-      className: "project__img",
-    });
-
-    const appImg: IAppImg = this.projectData.appImg;
-    const themes = ["light", "dark"] as const;
-    if (appImg.all) {
-      const img = createElementWithAttribute("img", {
-        src: appImg.all,
-      });
-      imgWrapper.appendChild(img);
-      return imgWrapper;
-    }
-
-    themes.forEach((theme) => {
-      const themeImg = createElementWithAttribute("img", {
-        src: appImg[theme],
-        className: `hidden-on-${getReverseTheme(theme)}`,
-      });
-      themeImg.setAttribute("part", `img-${theme}`);
-      imgWrapper.appendChild(themeImg);
-    });
-    return imgWrapper;
   }
 
   handleAnimation() {
