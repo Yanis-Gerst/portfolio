@@ -27,13 +27,18 @@
     position: relative;
     border: 1px solid var(--content);
     overflow: hidden;
+    isolation: isolate;
+    z-index: 0;
+    mask-image: radial-gradient(white, black);
+    background-color: var(--background-main);
+    transition: background-color .3s ease-out;
 
 }
 
 .btn--secondary span {
     mix-blend-mode: difference;
     color: #FFF;
-    z-index: 2;
+
 }
 
 .btn--secondary::after {
@@ -46,11 +51,13 @@
     transition: transform .5s ease-out;
     background-color: var(--content);
     z-index: -1;
-}
 
+
+}
 
 
 .btn--secondary:hover::after {
     transform: skewX(20deg) translateX(-10%);
+
 }
 

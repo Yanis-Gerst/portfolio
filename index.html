@@ -1,87 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerst__Yanis--Portfolio</title>
-    <link rel="stylesheet" href="src/index.css">
-    <script defer src="https://smtpjs.com/v3/smtp.js"></script>
-    <script defer type="module" src="/src/main.ts"></script>
-  </head>
-  <body style="visibility: hidden">
-    <div id="app">
-      <custom-header></custom-header>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerst__Yanis--Portfolio</title>
+  <link rel="stylesheet" href="src/index.css">
+  <script defer src="https://smtpjs.com/v3/smtp.js"></script>
+  <script defer type="module" src="/src/main.ts"></script>
+</head>
+<body style="visibility: hidden">
+<div id="app">
+  <custom-header></custom-header>
 
-      <div class="desktop--hero-full-page">
+  <div class="desktop--hero-full-page">
 
-      <section id="hero-header">
+    <section id="hero-header">
 
-        <div class="hero__content">
-          <theme-button></theme-button>
-          <div class="hero__text">
-            <h1>Hi, I'm Yanis</h1>
-              <h1>Front-end Developer</h1>
-              <p>Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-            </div>
-          <div class="hero__cta">
-            <a href="#project"> <button class="btn">See my work</button></a>
-            <a href="#contact"><button class="btn--secondary"><span>Contact Me</span></button></a>
-          </div>
+      <div class="hero__content">
+        <theme-button></theme-button>
+        <div class="hero__text">
+          <h1>Hi, I'm Yanis</h1>
+          <h1>Front-end Developer</h1>
+          <p>Étudiant en informatique à Aix-Marseille, passioné par le développement web. </p>
         </div>
-        <div class="hero__illustration">
-          <img src="src/assets/hero-illustration.gif" alt="Illustration of web design">
-        </div>
-        <div class="hero__decoration"></div>
-        <div class="hero__decoration"></div>
-      </section>
-
-        <div class="scroll-arrow hidden-on-mobile">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 4V25.3333M16" class="down-arrow__main-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 25.3333L21.3333 20M16" class="down-arrow__left-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 20M16 25.3333L10.6666 20" class="down_arrow__right-line" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-
+        <div class="hero__cta">
+          <a href="#project">
+            <button class="btn">See my work</button>
+          </a>
+          <a href="#contact">
+            <button class="btn--secondary"><span>Contact Me</span></button>
+          </a>
         </div>
       </div>
+      <div class="hero__illustration">
+        <img src="src/assets/hero-illustration.gif" alt="Illustration of web design">
+      </div>
+      <div class="hero__decoration"></div>
+      <div class="hero__decoration"></div>
+    </section>
 
-      <section id="about">
-        <div class="about__text">
-         <h1>About me</h1>
-         <p>Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div class="about__r-side-desk">
-          <div id="google_map"></div>
+    <div class="scroll-arrow hidden-on-mobile">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 4V25.3333M16" class="down-arrow__main-line" stroke="black" stroke-linecap="round"
+              stroke-linejoin="round" />
+        <path d="M16 25.3333L21.3333 20M16" class="down-arrow__left-line" stroke="black" stroke-linecap="round"
+              stroke-linejoin="round" />
+        <path d="M16 20M16 25.3333L10.6666 20" class="down_arrow__right-line" stroke="black" stroke-linecap="round"
+              stroke-linejoin="round" />
+      </svg>
 
-          <div class="social-link-wrapper">
-            <social-link name="github">
-              <img slot="social-img" src="src/assets/GithubIcon.svg" class="hidden-on-dark" alt="link into my github account">
-              <img slot="social-img" src="src/assets/GithubDarkIcon.svg" class="hidden-on-light" alt="link into my github account">
-            </social-link>
-
-            <social-link name="linkedin">
-              <img slot="social-img" src="src/assets/LinkedinIcon.svg" alt="link into my LinkedIn account">
-            </social-link>
-
-          </div>
-        </div>
-      </section>
-
-    <section id="project">
-       <my-project name="things"></my-project>
-      <my-project name="studentPlatform"></my-project>
-      <my-project name="pizzaLegend"></my-project>
-      </section>
-
-      <section id="contact">
-        <contact-form></contact-form>
-      </section>
-
-      <custom-footer></custom-footer>
     </div>
+  </div>
+
+  <section id="about">
+    <div class="about__text">
+      <h1>About me</h1>
+      <p>
+        Je suis un étudiant en deuxième année de licence d'informatique à la faculté d'Aix-Marseille, passionné par le
+        développement web. Mon parcours autodidacte m'a permis d'acquérir des compétences solides dans la création de
+        sites web et d'applications. Mon ambition est de marier mes connaissances académiques en informatique avec ma
+        créativité autodidacte pour concevoir des expériences en ligne exceptionnelles.</p>
+    </div>
+    <div class="about__r-side-desk">
+      <div id="google_map"></div>
+
+      <div class="social-link-wrapper">
+        <social-link name="github">
+          <img slot="social-img" src="src/assets/GithubIcon.svg" class="hidden-on-dark"
+               alt="link into my github account">
+          <img slot="social-img" src="src/assets/GithubDarkIcon.svg" class="hidden-on-light"
+               alt="link into my github account">
+        </social-link>
+
+        <social-link name="linkedin">
+          <img slot="social-img" src="src/assets/LinkedinIcon.svg" alt="link into my LinkedIn account">
+        </social-link>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <my-project name="things"></my-project>
+    <my-project name="studentPlatform"></my-project>
+    <my-project name="pizzaLegend"></my-project>
+  </section>
+
+  <section id="contact">
+    <contact-form></contact-form>
+  </section>
+
+  <custom-footer></custom-footer>
+</div>
 
 
-
-  </body>
+</body>
 </html>

@@ -2,6 +2,8 @@ import projectData from "../../data/projectDetails.ts";
 import { IAppImg, IProjectName } from "../types/types.ts";
 import { findElementOrThrowError, renderTags } from "../utils/utils.ts";
 import { renderAppImg } from "../utils/renderingMethods.ts";
+import githubDarkSvg from "../assets/GithubDarkIcon.svg";
+import githubLightSvg from "../assets/GithubIcon.svg";
 
 type IProject = {
   title: string;
@@ -18,6 +20,13 @@ type IProject = {
 };
 export const renderDetailsPage = (projectName: IProjectName) => {
   const currentProject: IProject = projectData[projectName];
+
+  const githubDarkImg =
+    findElementOrThrowError<HTMLImageElement>(".github--dark");
+  const githubLightImg =
+    findElementOrThrowError<HTMLImageElement>(".github--light");
+  githubDarkImg.src = githubDarkSvg;
+  githubLightImg.src = githubLightSvg;
 
   const projectTitle = findElementOrThrowError(".project-intro h1");
   projectTitle.textContent = currentProject.title;

@@ -1,6 +1,8 @@
+@import "styles/fonts.css";
 @import "styles/button.css";
 @import "styles/tags.css";
 @import "styles/hiddenTheme.css";
+
 :root {
     --rounded: 0.5rem;
 }
@@ -29,23 +31,25 @@
 }
 
 
-
-
 html {
     scroll-behavior: smooth;
 }
 
-body {
+html, body {
+    position: relative;
     overflow-x: hidden;
+}
+
+body {
+
     box-sizing: border-box;
-    font-family: "Satoshi Variable", serif;
+    font-family: "Satoshi-Variable", serif;
     font-size: 16px;
     margin: 0;
     background-color: var(--background-main);
     color: var(--content);
     -webkit-font-smoothing: antialiased;
 }
-
 
 
 h1 {

@@ -2,6 +2,7 @@
     z-index: 10;
     position: relative;
 }
+
 .wrapper {
     display: flex;
     justify-content: space-between;
@@ -29,7 +30,7 @@
 }
 
 .header__logo {
-    font-family: "Clash Display Variable";
+    font-family: "Clash-Display-Variable", serif;
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -38,7 +39,6 @@
 .wrapper__hamburger {
     opacity: 1;
 }
-
 
 
 .hamburger-menu__nav .wrapper__navs {
@@ -76,7 +76,7 @@ a {
 }
 
 svg path {
-    stroke:var(--content);
+    stroke: var(--content);
 }
 
 @media screen and (min-width: 1050px) {
@@ -88,7 +88,7 @@ svg path {
         margin-right: auto;
         left: 0;
         right: 0;
-        top:0
+        top: 0
     }
 
     .wrapper__navs {
