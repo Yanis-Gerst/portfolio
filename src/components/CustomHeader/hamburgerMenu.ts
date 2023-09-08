@@ -13,7 +13,7 @@ export class HamburgerMenu extends HTMLElement {
   menuWrapper: HTMLElement;
   menuChildren: HTMLElement;
   menu: HTMLDivElement;
-  menuToggle: HTMLElement;
+  menuToggles: HTMLElement[];
   classNameConfig: IClassNameConfig;
   private handleBreakpoint: (() => void) | undefined;
   open: boolean;
@@ -21,13 +21,13 @@ export class HamburgerMenu extends HTMLElement {
   constructor(
     menuWrapper: HTMLElement,
     menuChildren: HTMLElement,
-    menuToggle: HTMLElement,
+    menuToggles: HTMLElement[],
     classNameConfig: IClassNameConfig,
   ) {
     super();
     this.menuWrapper = menuWrapper;
     this.menuChildren = menuChildren;
-    this.menuToggle = menuToggle;
+    this.menuToggles = menuToggles;
     this.classNameConfig = classNameConfig;
     this.open = false;
     this.menu = createElementWithAttribute("div", {
@@ -42,22 +42,17 @@ export class HamburgerMenu extends HTMLElement {
       throw Error("Hamburger Menu shadow DOM not defined");
     document.body.appendChild(this.menu);
     this.menu.shadowRoot.appendChild(this.menuChildren);
-    this.menuToggle.addEventListener("click", () => this.handleMenu());
+    this.menuToggles.forEach((menuToggle) =>
+      menuToggle.addEventListener("click", () => this.handleMenu()),
+    );
   }
 
   handleMenu() {
-    console.log("YO", this.menu);
     if (this.open) {
-      const halfOfTransition = 150;
       this.closeMenu();
-      setTimeout(
-        () => this.menuWrapper.classList.remove(this.classNameConfig.open),
-        halfOfTransition,
-      );
       return;
     }
     this.openMenu();
-    this.menuWrapper.classList.add(this.classNameConfig.open);
   }
 
   closeMenu() {

@@ -62,6 +62,15 @@ export default class CustomHeader extends HTMLElement {
       className: "hamburger-menu__nav",
     });
 
+    const crossIconWrapper = createElementWithAttribute("div", {
+      className: "custom-header__hamburger-menu__cross-icon",
+    });
+    crossIconWrapper.innerHTML =
+      '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+      '<path d="M8 9L24 25" stroke="white" stroke-opacity="0.87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+      '<path d="M8 25L24 9" stroke="white" stroke-opacity="0.87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+      "</svg>\n";
+
     this.shadow.appendChild(headerWrapper);
 
     headerWrapper.appendChild(logoContainer);
@@ -72,12 +81,13 @@ export default class CustomHeader extends HTMLElement {
 
     logoContainer.appendChild(logo);
 
+    hamburgerMenuNav.appendChild(crossIconWrapper);
     hamburgerMenuNav.appendChild(navContainer.cloneNode(true));
 
     this.hamburgerMenu = new HamburgerMenu(
       headerWrapper,
       hamburgerMenuNav,
-      hamburgerImg,
+      [hamburgerImg, crossIconWrapper],
       {
         open: openMenuClassName,
         base: hamburgerMenuClassName,
