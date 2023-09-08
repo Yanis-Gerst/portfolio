@@ -4,16 +4,24 @@ button {
     height: 32px;
     border: none;
     outline: none;
-    display: grid;
-    place-items: center;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color .2s ease-out;
+    padding: 0;
+    position: relative;
 }
 
 button:hover {
     background-color: var(--secondary-content);
 }
+
+svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
 
 svg path {
     fill: var(--background-main);
