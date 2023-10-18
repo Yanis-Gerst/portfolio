@@ -15,6 +15,12 @@ button:hover {
     background-color: var(--secondary-content);
 }
 
+button:focus-visible {
+    outline:auto;
+    outline-color: rgb(0, 95, 204);
+    
+}
+
 svg {
     position: absolute;
     top: 50%;

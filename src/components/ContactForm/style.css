@@ -61,6 +61,11 @@ p {
 svg path {
     fill: var(--content);
 }
+
+.form__submit-button:focus-visible {
+    outline: auto;
+    outline-color: var(--content) ;
+}
 @media screen and (min-width: 1050px) {
     .contact {
         max-width: 980px;

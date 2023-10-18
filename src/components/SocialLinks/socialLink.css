@@ -35,3 +35,8 @@
 .social-link--linkedin {
     background-color: #0A66C2;
 }
+
+.social-link--linkedin:focus-visible {
+    outline-color: var(--content);
+
+}

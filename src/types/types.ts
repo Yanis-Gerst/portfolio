@@ -8,7 +8,10 @@ export type allThemeImg = {
 export type byThemeImages = {
   [key in Themes]: string;
 };
-export type IAppImg = allThemeImg | byThemeImages;
+export type IAltImg = {
+  alt: string;
+};
+export type IAppImg = (allThemeImg | byThemeImages) & IAltImg;
 export type IProjectData = {
   title: string;
   resume: string;

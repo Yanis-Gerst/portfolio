@@ -14,7 +14,7 @@ const openMenuClassName = "custom-header__hamburger-menu--open";
 export default class CustomHeader extends HTMLElement {
   open: boolean;
   shadow: ShadowRoot;
-  hamburgerMenu: Element | undefined;
+  hamburgerMenu: HamburgerMenu | undefined;
   handleThemeChange: (() => void) | undefined;
 
   constructor() {
@@ -50,7 +50,8 @@ export default class CustomHeader extends HTMLElement {
     });
 
     hamburgerImg.innerHTML +=
-      '<svg width="32" height="32" viewBox="0 0 32 32"  xmlns="http://www.w3.org/2000/svg">\n' +
+      '<svg role="img" width="32" height="32" viewBox="0 0 32 32"  xmlns="http://www.w3.org/2000/svg">\n' +
+      "<title>Open the navigation Menu</title>\n" +
       '<g id="Hamburger Menu">\n' +
       '<path id="Top" d="M8 10.6667L24 10.6667" stroke="#121212" stroke-linecap="round" stroke-linejoin="round"/>\n' +
       '<path id="Mid" d="M8 16L24 16" stroke="#121212" stroke-linecap="round" stroke-linejoin="round"/>\n' +
@@ -66,7 +67,8 @@ export default class CustomHeader extends HTMLElement {
       className: "custom-header__hamburger-menu__cross-icon",
     });
     crossIconWrapper.innerHTML =
-      '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+      '<svg role="img" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+      "<title>Close the navigation menu</title>\n" +
       '<path d="M8 9L24 25" stroke="white" stroke-opacity="0.87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
       '<path d="M8 25L24 9" stroke="white" stroke-opacity="0.87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
       "</svg>\n";
@@ -97,10 +99,12 @@ export default class CustomHeader extends HTMLElement {
 
   appendAllNav(navList: HTMLElement) {
     navConfigs.forEach((navConfig) => {
+      const li = document.createElement("li");
       const anchorElement = document.createElement("a");
       anchorElement.href = `#${navConfig.scrollTo}`;
       anchorElement.textContent = navConfig.label;
-      navList.appendChild(anchorElement);
+      li.appendChild(anchorElement);
+      navList.appendChild(li);
     });
   }
 
@@ -114,9 +118,6 @@ export default class CustomHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    this.hamburgerMenu = document.querySelector(
-      `.${hamburgerMenuClassName}`,
-    ) as Element;
     if (!this.hamburgerMenu) {
       throw Error(
         "Not match found for a hamburger Menu in Custom header Component",
@@ -132,9 +133,9 @@ export default class CustomHeader extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.hamburgerMenu?.remove();
+    this.hamburgerMenu?.disconnectedCallback();
     if (!this.handleThemeChange)
-      throw Error("Handle breakpoint function not defined");
+      throw Error("Handle theme function not defined");
     window.removeEventListener("theme-change", this.handleThemeChange);
   }
 }

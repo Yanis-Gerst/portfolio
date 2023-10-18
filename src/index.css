@@ -85,3 +85,8 @@ p {
 }
 
 
+@media screen and (min-width: 1050px) {
+    #app {
+        max-width: none;
+    }
+}

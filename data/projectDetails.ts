@@ -17,6 +17,7 @@ export default {
     appImg: {
       light: thingsLight,
       dark: thingsDark,
+      alt: "Screenshot of my web clone of things 3",
     },
     goals: [
       "Avant de commencer ce projet, j'apprenais les bases de l'UI/UX afin de pouvoir concevoir des interface esthétique et fonctionnelle, apprendre à utiliser Figma, de pouvoir communiquer avec un designer et améliorer la fidélite de mes intégrations. Pendant mes aventures sur Figma j'ai réaliser que Things est une application qui possède une très bonne interface et que cela pourrait être formateur de le reproduire à l'identique en plus cela me permettrait d'apprendre à concevoir des API REST.",
@@ -43,6 +44,7 @@ export default {
     features: ["CRUD", "User Authentication", "REST API"],
     appImg: {
       all: studentDrivePlatformImg,
+      alt: "Screenshot of the hero header of my student platform",
     },
     goals: [
       "Avec un camarade classe, on voulait réunir les étudiants de différentes filières, c'est pourquoi on a créé un serveur discord et l'on a eu l'idée de créer ce drive qui permettrait d'aider les étudiants à mieux s'orienter dans leur parcours scolaire en leur permettant voir concrètement le contenu des cours des années suivantes. Donc, je décide de créer ce projet qui permettait en plus d'apprendre mes technologies comme Next.js et d'en apprendre plus sur le web design. Sachant qu'au début du projet je n'avais que très peu de connaissances en UI, pour moi cette partie-là du projet a été un vrai défi",
@@ -75,6 +77,7 @@ export default {
     features: ["Combat System", "Cinematic Scene", "PNG"],
     appImg: {
       all: pizzaLegendImg,
+      alt: "Screenshot of a fight in my pizza legend game",
     },
     goals: [
       "J'ai construit ce projet, car je souhaitait améliorer mon niveau en Javascript, en je me disais que créer un jeu vidéo sur navigateur avec du VanillaJs était techniquement plus formateur que de construire un simple site web. En parallèle, j'apprenais en profondeur la théorie de Javascript afin de bien comprendre fonctionnement du langagee et de pouvoir tester sur Pizza Legend mes nouvelles connaissances.",

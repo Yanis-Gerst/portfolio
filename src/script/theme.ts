@@ -2,12 +2,14 @@ import { Themes } from "../components/Maps/types.ts";
 
 export const getInitTheme = (): Themes => {
   const currentTheme = getCurrentTheme();
-  if (currentTheme !== null) return currentTheme;
+
+  if (currentTheme) return currentTheme;
+
   if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    return "dark";
+    return "light";
   }
   return "light";
 };

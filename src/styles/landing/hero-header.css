@@ -1,19 +1,84 @@
 
 #hero-header {
     position: relative;
+    padding-top: 5rem;
 }
 
-#hero-header h1:last-of-type {
-    margin-bottom: .5rem;
-}
-
-#hero-header p {
-    margin-bottom: 1.5rem;
+.hero-main {
+    height: 100vh;
 }
 
 .hero__content {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    
 }
+
+.content__main--sub {
+    max-width: 278px;
+    margin: 0 auto;
+}
+
+
+.hero-cta {
+    width: 288px;
+    margin-top: 3rem;
+}
+
+.hero-cta button {
+    width: 100%;
+    background-color: var(--content);
+    color: var(--background-main);
+    outline: none;
+    border: none;
+    padding: .75rem 1rem;
+    border-radius: var(--rounded);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content__main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+
+.hero-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+
+.yanis-illustration {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(104, 128, 255, 0.1);
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.yanis-illustration img {
+    width: 100%;
+}
+
+.content__main--big {
+    font-size: 1.5rem;
+    font-family: "Gilroy", serif;
+}
+
+.content__main span {
+    color: var(--primary-color);
+}
+
 
 theme-button::part(theme-button) {
     position: absolute;
@@ -22,76 +87,45 @@ theme-button::part(theme-button) {
     right: 0;
 }
 
-.hero__cta {
-    display: flex;
-    gap: .5rem;
-    flex-direction: column;
-}
-
-.hero__cta button {
-    width: 100%;
-}
-
-.hero__illustration img {
-    width: 100%;
-}
-
-.hero__decoration {
-    position: absolute;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    background-color: red;
-}
-
-#hero-header > div:nth-last-of-type(2) {
-    bottom: -5rem;
-    left: 1rem;
-
-}
-
-#hero-header > div:last-of-type {
-    bottom: -3rem;
-    right: 35%;
-    transform: translateY(175%);
-}
 
 section {
     margin-bottom: 13.5rem;
 }
 
 
-
-
-
 @media screen and (min-width: 1050px) {
     #hero-header {
-        display: flex;
-        gap: 8rem;
-        align-items: center;
-        margin-top: 12rem;
-        justify-content: center;
-
+        padding-top: 8rem;
+        margin-bottom: 0;
     }
 
-    #hero-header h1 {
-        font-size: 3rem;
-    }
 
 
     .hero__content {
-        max-width: 480px;
+        max-width: 570px;
+        margin: 0 auto;
     }
 
-    .hero__cta {
-        flex-direction: row;
-        gap: 1rem;
+    .hero__content p {
+        font-size: 1.5rem;
     }
 
-    .hero__cta a {
-        flex-basis: 50%;
+    .hero__content .content__main--big {
+        font-size: 2.5rem;
     }
 
+    .content__main--sub {
+        max-width: 350px;
+    }
+
+    .content__main {
+        gap: 2rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .hero-cta {
+        margin-top:  4.5rem;
+    }
 
     .desktop--hero-full-page {
         height: 95vh;
@@ -101,28 +135,65 @@ section {
         position: relative;
     }
 
+    .desktop--hero-full-page > * {
+        height: 95vh;
+        flex-shrink: 0;
+    }
+
     .scroll-arrow {
         width: min-content;
         margin-left: auto;
         margin-right: auto;
         transition: opacity .3s ease-out;
+        position: relative;
+        width: 60px;
+        height: 60px;
     }
 
-    .scroll-arrow path {
+    .scroll-arrow .circular-text {
+        position: absolute;
+        inset: 0;
+        margin: 0 auto;
+        animation: infiniteRotate 4s infinite linear;
+
+    }
+
+    .scroll-arrow .arrow {
+        margin-bottom: 1px;
+        position: absolute;
+        inset: 0;
+        margin: 0 auto;
+        transform: translateY(45%);
+    }
+
+    .scroll-arrow .arrow path {
         animation: bouncyArrow 2s linear forwards infinite;
         animation-delay: 800ms;
-        stroke: var(--content)
+        stroke: var(--content);
     }
+
+
+
+
+
 }
 
 @keyframes bouncyArrow {
     10% {
-        transform: scaleY(130%);
+        transform: scaleY(125%);
 
     }
     20% {
         transform: scaleY(120%);
     }
 
+}
 
+@keyframes infiniteRotate {
+
+    0% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
 }

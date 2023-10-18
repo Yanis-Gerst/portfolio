@@ -46,7 +46,6 @@ const handleCss = (path: string) => {
   const css = routes[path].css || routes["404"].css;
   const styleElement = document.createElement("style");
   styleElement.textContent = css;
-  console.log(styleElement, "oeoeoeoeoeo");
   head.appendChild(styleElement);
   currentStyle = styleElement;
 };

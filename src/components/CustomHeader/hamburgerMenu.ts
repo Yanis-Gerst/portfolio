@@ -22,7 +22,7 @@ export class HamburgerMenu extends HTMLElement {
     menuWrapper: HTMLElement,
     menuChildren: HTMLElement,
     menuToggles: HTMLElement[],
-    classNameConfig: IClassNameConfig,
+    classNameConfig: IClassNameConfig
   ) {
     super();
     this.menuWrapper = menuWrapper;
@@ -33,6 +33,7 @@ export class HamburgerMenu extends HTMLElement {
     this.menu = createElementWithAttribute("div", {
       className: classNameConfig.base,
     });
+
     createShadowDomWithStyle(this.menu, style);
     this.render();
   }
@@ -40,11 +41,14 @@ export class HamburgerMenu extends HTMLElement {
   render() {
     if (!this.menu.shadowRoot)
       throw Error("Hamburger Menu shadow DOM not defined");
+
+    this.menu.setAttribute("aria-hidden", "true");
     document.body.appendChild(this.menu);
     this.menu.shadowRoot.appendChild(this.menuChildren);
     this.menuToggles.forEach((menuToggle) =>
-      menuToggle.addEventListener("click", () => this.handleMenu()),
+      menuToggle.addEventListener("click", () => this.handleMenu())
     );
+    this.connectedCallback();
   }
 
   handleMenu() {
@@ -56,17 +60,19 @@ export class HamburgerMenu extends HTMLElement {
   }
 
   closeMenu() {
-    this.menu.classList.remove(this.classNameConfig.open);
     this.open = false;
+    this.menu.classList.remove(this.classNameConfig.open);
+    this.menu.setAttribute("aria-hidden", "false");
   }
 
   openMenu() {
     this.open = true;
     this.menu.classList.add(this.classNameConfig.open);
+    this.menu.setAttribute("aria-hidden", "true");
   }
 
   closeMenuOnBreakpoint() {
-    if (window.innerWidth >= 1024) return;
+    if (window.innerWidth <= 1024) return;
     if (!this.open) return;
     this.closeMenu();
   }
@@ -80,6 +86,7 @@ export class HamburgerMenu extends HTMLElement {
     if (!this.handleBreakpoint)
       throw Error("Handle breakpoint function not defined");
     window.removeEventListener("resize", this.handleBreakpoint);
+    this.menu.remove();
   }
 }
 

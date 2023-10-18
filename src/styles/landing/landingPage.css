@@ -1,6 +1,7 @@
 @import "about.css";
 @import "hero-header.css";
 @import "projects.css";
+@import "welcomeAnimation.css";
 
 
 
@@ -32,8 +33,5 @@
 }
 
 
-@media screen and (min-width: 1050px) {
-    #app {
-        max-width: 1200px;
-    }
-}
+
+
