@@ -2,10 +2,11 @@
 #hero-header {
     position: relative;
     padding-top: 5rem;
+    margin-bottom: 0;
 }
 
 .hero-main {
-    height: 100vh;
+    height: 85vh;
 }
 
 .hero__content {
@@ -92,11 +93,42 @@ section {
     margin-bottom: 13.5rem;
 }
 
+.scroll-arrow {
+        margin-left: auto;
+        margin-right: auto;
+        transition: opacity .3s ease-out;
+        position: relative;
+        width: 60px;
+        height: 60px;
+    }
+
+    .scroll-arrow .circular-text {
+        position: absolute;
+        inset: 0;
+        margin: 0 auto;
+        animation: infiniteRotate 4s infinite linear;
+
+    }
+
+    .scroll-arrow .arrow {
+        margin-bottom: 1px;
+        position: absolute;
+        inset: 0;
+        margin: 0 auto;
+        transform: translateY(45%);
+    }
+
+    .scroll-arrow .arrow path {
+        animation: bouncyArrow 2s linear forwards infinite;
+        animation-delay: 800ms;
+        stroke: var(--content);
+    }
+
 
 @media screen and (min-width: 1050px) {
     #hero-header {
         padding-top: 8rem;
-        margin-bottom: 0;
+       
     }
 
 
@@ -140,37 +172,7 @@ section {
         flex-shrink: 0;
     }
 
-    .scroll-arrow {
-        width: min-content;
-        margin-left: auto;
-        margin-right: auto;
-        transition: opacity .3s ease-out;
-        position: relative;
-        width: 60px;
-        height: 60px;
-    }
-
-    .scroll-arrow .circular-text {
-        position: absolute;
-        inset: 0;
-        margin: 0 auto;
-        animation: infiniteRotate 4s infinite linear;
-
-    }
-
-    .scroll-arrow .arrow {
-        margin-bottom: 1px;
-        position: absolute;
-        inset: 0;
-        margin: 0 auto;
-        transform: translateY(45%);
-    }
-
-    .scroll-arrow .arrow path {
-        animation: bouncyArrow 2s linear forwards infinite;
-        animation-delay: 800ms;
-        stroke: var(--content);
-    }
+    
 
 
 

@@ -52,4 +52,4 @@ customElements.define("my-project", Project);
 customElements.define("theme-button", ThemeButton);
 customElements.define("social-link", socialLink);
 
-handleLocation().then(() => addTextRevealAnimation());
+handleLocation().then();
