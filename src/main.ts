@@ -5,7 +5,6 @@ import Project from "./components/Project/Project.ts";
 import ThemeButton from "./components/ThemeButton/themeButton.ts";
 import socialLink from "./components/SocialLinks/SocialLink.ts";
 import { handleLocation, IRoute } from "./script/router.ts";
-import { addTextRevealAnimation } from "./script/welcomeAnimation.ts";
 import { Themes } from "./components/Maps/types.ts";
 import { setupLandingPage } from "./script/landingPage.ts";
 import { renderDetailsPage } from "./script/detailsPage.ts";

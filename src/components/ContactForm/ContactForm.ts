@@ -2,11 +2,9 @@ import {
   appendChildList,
   createElementWithAttribute,
   createShadowDomWithStyle,
-  stringToParagraph,
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
 import { sendEmail } from "../../utils/mail.ts";
-import { pendingAnimation } from "./SubmitButton/submitButtonAnimation.ts";
 import SubmitButton from "./SubmitButton/SubmitButton.ts";
 
 export interface EmailConfig {
