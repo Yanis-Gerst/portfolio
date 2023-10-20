@@ -14,7 +14,6 @@ export const route = (e: MouseEvent & { currentTarget: HTMLAnchorElement }) => {
 
 export const handleLocation = async (): Promise<void> => {
   const path = window.location.pathname;
-
   const htmlFilePath = routes[path].html || routes["404"].html;
   const html = await fetch(htmlFilePath).then((data) => data.text());
   const app = document.getElementById(appId) as HTMLElement;
@@ -58,7 +57,7 @@ const handleJs = (path: string) => {
 
 export const navigate = async (
   path: string,
-  callback: Function | undefined,
+  callback: Function | undefined
 ) => {
   window.history.pushState({}, "", path);
   await handleLocation();

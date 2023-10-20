@@ -5,6 +5,10 @@ h1 {
     margin-bottom: 2rem;
 }
 
+.hidden {
+    display: none;
+}
+
 .personal-mail-wrapper {
     display: flex;
     gap: 0.5rem;
@@ -62,10 +66,51 @@ svg path {
     fill: var(--content);
 }
 
+.form__submit-button {
+    margin: 0;
+}
+
 .form__submit-button:focus-visible {
     outline: auto;
     outline-color: var(--content) ;
 }
+
+.form__submit-button p {
+    transform: translateY(-100%);
+}
+
+.button-text-container {
+    overflow: hidden;
+    height: 15.5px;
+}
+
+.form__sending-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+.loading-circle {
+    width: 24px;
+    height: 24px;
+    background: conic-gradient(var(--background-main),#5772FF);
+    border-radius: 50%;
+    position: relative;
+    animation: infiniteRotate 2s infinite linear;
+}
+
+.loading-circle:after {
+    content: "";
+    background-color: var(--background-main);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translateX(-50%) translateY(-50%);
+   
+}
+
 @media screen and (min-width: 1050px) {
     .contact {
         max-width: 980px;
@@ -84,9 +129,18 @@ svg path {
         flex-basis: calc(50% - 0.75rem);
     }
 
-    form .form__input-wrapper:last-of-type {
+    form .form__input-wrapper:nth-of-type(3) {
         flex-basis: 100%;
     }
 
 }
 
+
+@keyframes infiniteRotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

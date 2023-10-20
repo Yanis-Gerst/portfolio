@@ -1,9 +1,13 @@
 import {
+  appendChildList,
   createElementWithAttribute,
   createShadowDomWithStyle,
+  stringToParagraph,
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
 import { sendEmail } from "../../utils/mail.ts";
+import { pendingAnimation } from "./SubmitButton/submitButtonAnimation.ts";
+import SubmitButton from "./SubmitButton/SubmitButton.ts";
 
 export interface EmailConfig {
   from: string;
@@ -44,11 +48,13 @@ const inputsConfig: IInputConfig[] = [
 export default class ContactForm extends HTMLElement {
   shadow: ShadowRoot;
   form: HTMLFormElement | undefined;
+  formSubmit: SubmitButton;
   onSubmit: (() => void) | undefined;
 
   constructor() {
     super();
     this.shadow = createShadowDomWithStyle(this, style);
+    this.formSubmit = new SubmitButton();
     this.render();
   }
 
@@ -76,16 +82,15 @@ export default class ContactForm extends HTMLElement {
     });
     this.addAllInputs(form);
 
-    const submitButton = createElementWithAttribute("button", {
-      className: "form__submit-button btn",
-    });
-    submitButton.textContent = "Send Message";
+    const sendingContainer = this.formSubmit.getDom();
 
     this.shadow.appendChild(wrapper);
-    wrapper.appendChild(sectionTitle);
-    wrapper.appendChild(personalEmailWrapper);
-    wrapper.appendChild(divider);
-    wrapper.appendChild(form);
+    appendChildList(wrapper, [
+      sectionTitle,
+      personalEmailWrapper,
+      divider,
+      form,
+    ]);
 
     personalEmailWrapper.innerHTML +=
       '<svg role="img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -101,7 +106,7 @@ export default class ContactForm extends HTMLElement {
       "</svg>\n";
     personalEmailWrapper.appendChild(personalEmail);
 
-    form.appendChild(submitButton);
+    form.appendChild(sendingContainer);
   }
 
   addAllInputs(form: HTMLFormElement) {
@@ -146,8 +151,14 @@ export default class ContactForm extends HTMLElement {
         name: entryData.get("name") as string,
       };
 
-      sendEmail(emailConfig);
-
+      const emailPromise = sendEmail(emailConfig);
+      const timeline = this.formSubmit.handlePending();
+      emailPromise.then(() => {
+        setTimeout(() => {
+          timeline.clear();
+          this.formSubmit.handleSent();
+        }, 300);
+      });
       this.form?.reset();
     });
   }

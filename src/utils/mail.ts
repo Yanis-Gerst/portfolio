@@ -1,8 +1,8 @@
 import { EmailConfig } from "../components/ContactForm/ContactForm.ts";
 
-export const sendEmail = (config: EmailConfig) => {
+export const sendEmail = (config: EmailConfig): Promise<any> => {
   // @ts-ignore
-  Email.send({
+  return Email.send({
     Host: "smtp.elasticemail.com",
     Username: "yanisgerst.pro@gmail.com",
     Password: "9B48F9938BAF916D19B8CCDBD7812C00A934",
@@ -10,5 +10,5 @@ export const sendEmail = (config: EmailConfig) => {
     From: "yanisgerst.pro@gmail.com",
     Subject: "Email from my portfolio website",
     Body: `From ${config.name}, ${config.from}: ${config.body}`,
-  }).then((message: string) => alert(message));
+  });
 };

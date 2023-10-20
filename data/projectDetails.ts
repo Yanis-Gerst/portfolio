@@ -5,9 +5,9 @@ import pizzaLegendImg from "../src/assets/pizzaLegend.png";
 
 export default {
   things: {
-    title: "Web Clone of Things 3",
+    title: "Web clone of Things 3",
     resume:
-      "Authentique clone de l’application Things 3 étant disponible uniquement dans l’app store",
+      "Authentique clone de l'application Things 3 étant disponible uniquement dans l'app store",
     link: "https://yanis.gerst.io/things-clone",
     introduction:
       "Ce projet a pour but de reproduire l'expérience utilisateur que l'on peut avoir en utilisant Things sur un navigateur. Cela m'a aussi permis d'apprendre les bases et les bonnes pratiques dans la conceptions d'API REST.",

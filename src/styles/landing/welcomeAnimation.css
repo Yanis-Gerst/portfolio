@@ -12,6 +12,7 @@
     font-size: 3.5rem;
     color: var(--background-main);
     line-height:  1;
+    font-weight: 800;
 
     overflow: hidden;
 }
