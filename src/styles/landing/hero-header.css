@@ -15,6 +15,7 @@
     text-align: center;
     justify-items: center;
     align-items: center;
+    position: relative;
     
 }
 
@@ -40,6 +41,7 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 
 .content__main {
     display: flex;
@@ -102,27 +104,32 @@ section {
         height: 60px;
     }
 
-    .scroll-arrow .circular-text {
-        position: absolute;
-        inset: 0;
-        margin: 0 auto;
-        animation: infiniteRotate 4s infinite linear;
+.scroll-arrow .circular-text {
+    position: absolute;
+    inset: 0;
+    margin: 0 auto;
+    animation: infiniteRotate 4s infinite linear;
 
-    }
+}
 
-    .scroll-arrow .arrow {
-        margin-bottom: 1px;
-        position: absolute;
-        inset: 0;
-        margin: 0 auto;
-        transform: translateY(45%);
-    }
+.circular-text path {
+    fill: var(--content);
+}
 
-    .scroll-arrow .arrow path {
-        animation: bouncyArrow 2s linear forwards infinite;
-        animation-delay: 800ms;
-        stroke: var(--content);
-    }
+.scroll-arrow .arrow {
+    margin-bottom: 1px;
+    position: absolute;
+    inset: 0;
+    margin: 0 auto;
+    transform: translateY(45%);
+}
+
+.scroll-arrow .arrow path {
+    animation: bouncyArrow 2s linear forwards infinite;
+    animation-delay: 800ms;
+    stroke: var(--content);
+}
+    
 
 
 @media screen and (min-width: 1050px) {

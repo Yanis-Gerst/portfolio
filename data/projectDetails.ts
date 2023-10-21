@@ -15,8 +15,7 @@ export default {
     libraryTags: ["React Query", "React Hook Form", "Jest"],
     features: ["CRUD", "User Authentication", "REST API"],
     appImg: {
-      light: thingsLight,
-      dark: thingsDark,
+      all: thingsDark,
       alt: "Screenshot of my web clone of things 3",
     },
     goals: [
@@ -80,8 +79,7 @@ export default {
       alt: "Screenshot of a fight in my pizza legend game",
     },
     goals: [
-      "J'ai construit ce projet, car je souhaitait améliorer mon niveau en Javascript, en je me disais que créer un jeu vidéo sur navigateur avec du VanillaJs était techniquement plus formateur que de construire un simple site web. En parallèle, j'apprenais en profondeur la théorie de Javascript afin de bien comprendre fonctionnement du langagee et de pouvoir tester sur Pizza Legend mes nouvelles connaissances.",
-      "Ce jeu est né d'une blague entre copains, puis par hasard, j'ai découvert qu'il existait un Pokémon avec des pizzas. Comme je n'avais aucune compétence en pixel art, les ressources graphiques m'ont été très utiles pour concrétiser cette blague, ce qui m'a pris six mois.",
+      "J'ai construit ce projet parce que je souhaitais améliorer mon niveau en JavaScript, et je me disais que créer un jeu vidéo sur navigateur avec du VanillaJS était techniquement plus formateur que de construire un simple site web. En parallèle, j'apprenais en profondeur la théorie de JavaScript afin de bien comprendre le fonctionnement du langage et de pouvoir tester mes nouvelles connaissances sur Pizza Legend. Ce jeu est né d'une blague entre copains, puis par hasard, j'ai découvert qu'il existait un Pokémon avec des pizzas. Comme je n'avais aucune compétence en pixel art, les ressources graphiques m'ont été très utiles pour concrétiser cette blague.",
     ],
     spotlight: [
       "Le système de combat a été la fonctionnalité qui a été techniquement la plus difficile à réaliser. Sur cette fonctionnalité, il y a eu une multitude de bugs à résoudre, la difficulté étant de gérer les états des pizzas et l'état du combat, notamment pour savoir de quel côté se trouve le tour de quelle équipe, quelle pizza est active sur le terrain, quelle pizza est morte, et la gestion des types... La méthode qui m'a permis de résoudre ces problèmes de gestion d'états a été d'utiliser des écouteurs d'événements personnalisés, ce qui m'a permis de mettre à jour les états au moment voulu.\n",

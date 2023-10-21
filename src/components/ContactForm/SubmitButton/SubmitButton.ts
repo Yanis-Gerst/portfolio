@@ -17,7 +17,6 @@ export default class SubmitButton {
     this.wrapper = createElementWithAttribute("div", {
       className: "form__sending-container",
     });
-    this;
 
     this.submitButton = createElementWithAttribute("button", {
       className: "form__submit-button btn",
@@ -36,8 +35,15 @@ export default class SubmitButton {
       className: "loading-circle hidden",
     });
 
-    this.wrapper.appendChild(this.submitButton);
-    this.wrapper.appendChild(loadingCirlce);
+    const validateIcon = `
+    <svg class="validate-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 10L11 18" stroke="#6880FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 18L20 6" stroke="#6880FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    `;
+
+    this.wrapper.innerHTML += validateIcon;
+    appendChildList(this.wrapper, [this.submitButton, loadingCirlce]);
 
     this.submitButton.append(buttonTextContainer);
     appendChildList(buttonTextContainer, buttonContents);

@@ -70,6 +70,7 @@ svg path {
     margin: 0;
 }
 
+
 .form__submit-button:focus-visible {
     outline: auto;
     outline-color: var(--content) ;
@@ -108,8 +109,12 @@ svg path {
     top: 50%;
     left: 50%;
     transform:  translateX(-50%) translateY(-50%);
-   
 }
+
+.validate-icon {
+    order: 100;
+}
+
 
 @media screen and (min-width: 1050px) {
     .contact {

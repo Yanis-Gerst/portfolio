@@ -8,6 +8,7 @@ import {
   handleAnchorLinksToIdElement,
   navConfigs,
 } from "../../script/naviguation.ts";
+import gsap from "gsap";
 
 const hamburgerMenuClassName = "custom-header__hamburger-menu";
 const openMenuClassName = "custom-header__hamburger-menu--open";
@@ -16,10 +17,12 @@ export default class CustomHeader extends HTMLElement {
   shadow: ShadowRoot;
   hamburgerMenu: HamburgerMenu | undefined;
   handleThemeChange: (() => void) | undefined;
+  currentAnimation: gsap.core.Tween | null;
 
   constructor() {
     super();
     this.open = false;
+    this.currentAnimation = null;
     this.shadow = createShadowDomWithStyle(this, style);
     this.render();
   }
@@ -93,7 +96,7 @@ export default class CustomHeader extends HTMLElement {
       {
         open: openMenuClassName,
         base: hamburgerMenuClassName,
-      },
+      }
     );
   }
 
@@ -109,18 +112,13 @@ export default class CustomHeader extends HTMLElement {
   }
 
   onThemeChange() {
-    const wrapper = this.shadow.querySelector(".wrapper");
-    if (!wrapper) return;
-    wrapper.classList.add("wrapper--theme-change");
-    wrapper.addEventListener("animationend", () => {
-      wrapper.classList.remove("wrapper--theme-change");
-    });
+    this.animateHeader();
   }
 
   connectedCallback() {
     if (!this.hamburgerMenu) {
       throw Error(
-        "Not match found for a hamburger Menu in Custom header Component",
+        "Not match found for a hamburger Menu in Custom header Component"
       );
     }
     const allAnchors = [
@@ -137,5 +135,22 @@ export default class CustomHeader extends HTMLElement {
     if (!this.handleThemeChange)
       throw Error("Handle theme function not defined");
     window.removeEventListener("theme-change", this.handleThemeChange);
+  }
+
+  animateHeader() {
+    const wrapper = this.shadow.querySelector(".wrapper");
+    if (!wrapper) return;
+    if (this.currentAnimation) {
+      this.currentAnimation.kill();
+    }
+
+    gsap.set(wrapper, { opacity: 0 });
+    const animation = gsap.to(wrapper, {
+      opacity: 1,
+      delay: 0.3,
+      ease: "power2.out",
+    });
+
+    this.currentAnimation = animation;
   }
 }
