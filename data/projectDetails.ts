@@ -1,4 +1,3 @@
-import thingsLight from "../src/assets/ThingsClone-light.png";
 import thingsDark from "../src/assets/ThingsClone-dark.png";
 import studentDrivePlatformImg from "../src/assets/studentDrive.png";
 import pizzaLegendImg from "../src/assets/pizzaLegend.png";
