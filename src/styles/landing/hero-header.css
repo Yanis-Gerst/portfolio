@@ -6,7 +6,7 @@
 }
 
 .hero-main {
-    height: 85vh;
+    height: 80vh;
 }
 
 .hero__content {
@@ -167,24 +167,46 @@ section {
     }
 
     .desktop--hero-full-page {
-        height: 95vh;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         position: relative;
     }
 
-    .desktop--hero-full-page > * {
-        height: 95vh;
+    .scroll-arrow {
         flex-shrink: 0;
+        margin-bottom: 2rem;
     }
 
-    
+}
 
+@media screen and (min-width: 1050px) and (max-height: 900px) {
+    #hero-header {
+        padding-top: 4rem;
+    }
 
+    .content__main {
+        gap: 1rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
 
+    .hero__content .content__main--big {
+        font-size: 2em;
+    }
 
+    .hero__content p {
+        font-size: 1.5rem;
+    }
 
+    .hero__content {
+        max-width: 410px;
+    }
+   
+    .hero-cta {
+        margin-top:  2.5rem;
+    }
 }
 
 @keyframes bouncyArrow {
