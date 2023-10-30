@@ -38,7 +38,7 @@ export default class Project extends HTMLElement {
       toString: anchorLink,
     });
     anchorElt.addEventListener("click", (e) =>
-      route(e as MouseEvent & { currentTarget: HTMLAnchorElement }),
+      route(e as MouseEvent & { currentTarget: HTMLAnchorElement })
     );
 
     const title = document.createElement("h1");

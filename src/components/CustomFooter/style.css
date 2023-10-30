@@ -20,7 +20,7 @@ svg path {
     fill: var(--content)
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1050px) {
     footer {
         margin-top: 8rem;
         max-width: 980px;

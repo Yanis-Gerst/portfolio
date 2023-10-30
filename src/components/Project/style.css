@@ -117,6 +117,14 @@ svg path {
         gap: 4rem;
     }
 
+    .project__link svg {
+        transform: translateY(-130%) scale(2);
+    }
+
+    .project__link:hover svg {
+        transform: translateY(-230%) translateX(2px) scale(2);
+    }
+    
     .project__r-side-desk {
         width: 351px;
     }
