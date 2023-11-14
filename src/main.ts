@@ -4,13 +4,15 @@ import ContactForm from "./components/ContactForm/ContactForm.ts";
 import Project from "./components/Project/Project.ts";
 import ThemeButton from "./components/ThemeButton/themeButton.ts";
 import socialLink from "./components/SocialLinks/SocialLink.ts";
-import { handleLocation, IRoute } from "./script/router.ts"; 
+import { handleLocation, IRoute } from "./script/router.ts";
 import { Themes } from "./components/Maps/types.ts";
 import { setupLandingPage } from "./script/landingPage.ts";
 import { renderDetailsPage } from "./script/detailsPage.ts";
 import landingPageCss from "./styles/landing/landingPage.css?inline";
 import detailsPageCss from "./styles/details/detailsPage.css?inline";
 import detailsPageHTML from "./pages/details.html?url";
+import notFoundPageHTML from "./pages/notFound.html?url";
+import notFoundPageCSS from "./styles/notFound/notFound.css?inline";
 
 export const appId = "app";
 export const themes: ReadonlyArray<Themes> = ["light", "dark"] as const;
@@ -21,9 +23,9 @@ const projectDetails = {
 } as const;
 
 export const routes: IRoute = {
-  "4O4": {
-    html: "/src/pages/notFound.html",
-    css: "/src/styles/404.css",
+  notFound: {
+    html: notFoundPageHTML,
+    css: notFoundPageCSS,
   },
   "/": {
     html: "index.html",

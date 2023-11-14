@@ -14,7 +14,10 @@ export const route = (e: MouseEvent & { currentTarget: HTMLAnchorElement }) => {
 
 export const handleLocation = async (): Promise<void> => {
   const path = window.location.pathname;
-  const htmlFilePath = routes[path].html || routes["404"].html;
+  const htmlFilePath = routes[path]
+    ? routes[path].html
+    : routes["notFound"].html;
+
   const html = await fetch(htmlFilePath).then((data) => data.text());
   const app = document.getElementById(appId) as HTMLElement;
   cleanDom();
@@ -42,7 +45,7 @@ const handleCss = (path: string) => {
     currentStyle = null;
   }
   const head = document.getElementsByTagName("head")[0];
-  const css = routes[path].css || routes["404"].css;
+  const css = routes[path] ? routes[path].css : routes["notFound"].css;
   const styleElement = document.createElement("style");
   styleElement.textContent = css;
   head.appendChild(styleElement);
@@ -50,7 +53,7 @@ const handleCss = (path: string) => {
 };
 
 const handleJs = (path: string) => {
-  const setup = routes[path].js;
+  const setup = routes[path] ? routes[path].js : routes.notFound.js;
   if (!setup) return;
   setup();
 };

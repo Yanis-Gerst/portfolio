@@ -36,6 +36,8 @@ export default class CustomFooter extends HTMLElement {
 
   render() {
     const footerWrapper = document.createElement("footer");
+    footerWrapper.setAttribute("part", "footer-wrapper");
+
     const iconWrapper = createElementWithAttribute("div", {
       className: "footer__social-link-wrapper",
     });
