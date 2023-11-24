@@ -10,6 +10,7 @@ import {
 } from "../../script/theme.ts";
 
 import styles from "./style.css?inline";
+import { handlerHover } from "../../script/customCursor.ts";
 
 export default class ThemeButton extends HTMLElement {
   shadow: ShadowRoot;
@@ -68,5 +69,6 @@ export default class ThemeButton extends HTMLElement {
 
   connectedCallback() {
     this.button.addEventListener("click", this.handleThemeChange.bind(this));
+    handlerHover(this.shadow);
   }
 }

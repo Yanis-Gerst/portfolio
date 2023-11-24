@@ -1,3 +1,4 @@
+import { handlerHover } from "../../script/customCursor.ts";
 import {
   createElementWithAttribute,
   createShadowDomWithStyle,
@@ -47,6 +48,13 @@ class SocialLink extends HTMLElement {
       case "linkedin":
         return "https://www.linkedin.com/in/yanis-gerst-595432243/";
     }
+  }
+
+  connectedCallback() {
+    handlerHover(this.shadow, [
+      "custom-cursor--hover-emoji",
+      "custom-cursor--hover-eye",
+    ]);
   }
 }
 

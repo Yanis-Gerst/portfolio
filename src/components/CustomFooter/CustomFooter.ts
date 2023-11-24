@@ -1,3 +1,4 @@
+import { handlerHover } from "../../script/customCursor.ts";
 import {
   createElementWithAttribute,
   createShadowDomWithStyle,
@@ -61,5 +62,12 @@ export default class CustomFooter extends HTMLElement {
       anchorElement.appendChild(socialIcon);
       wrapper.appendChild(anchorElement);
     });
+  }
+
+  connectedCallback() {
+    handlerHover(this.shadow, [
+      "custom-cursor--hover-emoji",
+      "custom-cursor--hover-eye",
+    ]);
   }
 }

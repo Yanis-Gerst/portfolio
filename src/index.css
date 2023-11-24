@@ -2,6 +2,7 @@
 @import "styles/button.css";
 @import "styles/tags.css";
 @import "styles/hiddenTheme.css";
+@import "styles/customCursor.css";
 
 :root {
     --rounded: 0.5rem;

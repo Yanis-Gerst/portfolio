@@ -1,0 +1,46 @@
+
+
+.custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--content);
+    transition: transform 350ms ease;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.custom-cursor--hover {
+  mix-blend-mode: difference;
+  transform: scale(2.5);
+
+}
+
+.custom-cursor--hover-emoji {
+  mix-blend-mode: normal;
+  background-color: rgba(104, 128, 255, .5);
+  transform: translate(-100%, -100%) scale(2.5);
+}
+
+.custom-cursor--hover-emoji::after {
+  content: "";
+  background-position: center;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor--hover-eye::after {
+  background-image: url("/src/assets/Eyes\ emoji.png");
+}
+
+.custom-cursor--hover-wave::after {
+  background-image: url("/src/assets/Wave\ emoji.png");
+}
+

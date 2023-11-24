@@ -8,6 +8,7 @@ import projectData from "../../../data/projectDetails.ts";
 import { toKebabCase, renderTags } from "../../utils/utils.ts";
 import { IProjectData, IProjectName } from "../../types/types.ts";
 import { renderAppImg } from "../../utils/renderingMethods.ts";
+import { handlerHover } from "../../script/customCursor.ts";
 
 export default class Project extends HTMLElement {
   shadow: ShadowRoot;
@@ -62,8 +63,10 @@ export default class Project extends HTMLElement {
 
     renderTags(tagsListWrapper, this.projectData.techTags);
 
-    const imgWrapper = createElementWithAttribute("div", {
+    const imgWrapper = createElementWithAttribute("a", {
       className: "project__img",
+      href: anchorLink,
+      toString: anchorLink,
     });
 
     renderAppImg(imgWrapper, this.projectData.appImg);
@@ -114,5 +117,12 @@ export default class Project extends HTMLElement {
       techTags: project.techTags,
       appImg: project.appImg,
     };
+  }
+
+  connectedCallback() {
+    handlerHover(this.shadow, [
+      "custom-cursor--hover-emoji",
+      "custom-cursor--hover-eye",
+    ]);
   }
 }

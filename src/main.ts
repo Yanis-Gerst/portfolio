@@ -8,6 +8,7 @@ import { handleLocation, IRoute } from "./script/router.ts";
 import { Themes } from "./components/Maps/types.ts";
 import { setupLandingPage } from "./script/landingPage.ts";
 import { renderDetailsPage } from "./script/detailsPage.ts";
+import { setupCustomCursor } from "./script/customCursor.ts";
 import landingPageCss from "./styles/landing/landingPage.css?inline";
 import detailsPageCss from "./styles/details/detailsPage.css?inline";
 import detailsPageHTML from "./pages/details.html?url";
@@ -53,4 +54,6 @@ customElements.define("my-project", Project);
 customElements.define("theme-button", ThemeButton);
 customElements.define("social-link", socialLink);
 
-handleLocation().then();
+handleLocation().then(() => {
+  setupCustomCursor();
+});

@@ -6,6 +6,7 @@ import {
 import style from "./style.css?inline";
 import { sendEmail } from "../../utils/mail.ts";
 import SubmitButton from "./SubmitButton/SubmitButton.ts";
+import { handlerHover } from "../../script/customCursor.ts";
 
 export interface EmailConfig {
   from: string;
@@ -159,5 +160,10 @@ export default class ContactForm extends HTMLElement {
       });
       this.form?.reset();
     });
+
+    handlerHover(this.shadow, [
+      "custom-cursor--hover-emoji",
+      "custom-cursor--hover-wave",
+    ]);
   }
 }

@@ -46,7 +46,6 @@ export class GoogleMaps implements IMaps {
       icon: customMarker,
     });
 
-    this.handleZoom();
     this.handleChangingTheme();
   }
 
@@ -56,7 +55,7 @@ export class GoogleMaps implements IMaps {
       zoom: 12,
       mapTypeControl: false,
       fullscreenControl: false,
-      zoomControl: false,
+      zoomControl: true,
       streetViewControl: false,
       scrollwheel: false,
       styles: googleMapsTheme[this.theme],
@@ -74,21 +73,6 @@ export class GoogleMaps implements IMaps {
       scaledSize: new google.maps.Size(64, 64),
     };
     return customMarker;
-  }
-
-  private handleZoom() {
-    this.divElement.addEventListener("wheel", (event: WheelEvent) => {
-      const zoomLevel = this.map?.getZoom();
-      if (!zoomLevel) throw Error("Map Can't zoom or map is not defined");
-
-      if (event.deltaY && event.deltaY < 0) {
-        this.map?.setZoom(zoomLevel + 1);
-      } else {
-        this.map?.setZoom(zoomLevel - 1);
-      }
-
-      event.preventDefault();
-    });
   }
 
   private handleChangingTheme = () => {
