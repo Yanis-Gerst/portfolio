@@ -37,10 +37,10 @@
 }
 
 .custom-cursor--hover-eye::after {
-  background-image: url("/public/Eyes\ emoji.png");
+  background-image: url("/Eyes\ emoji.png");
 }
 
 .custom-cursor--hover-wave::after {
-  background-image: url("/public/Wave\ emoji.png");
+  background-image: url("/Wave\ emoji.png");
 }
 
