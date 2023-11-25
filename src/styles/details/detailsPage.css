@@ -11,7 +11,7 @@ h1, p, h2 {
 }
 
 section {
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
 }
 
 h1 {
@@ -19,8 +19,8 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
-    margin-bottom: .5rem;
+    font-size: 1.5;
+    font-weight: bold;
 }
 
 .project__tags-wrapper {
@@ -33,10 +33,7 @@ h2 {
     position: relative;
 }
 
-.project__tags p {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+
 
 #project-header {
     margin-top: calc(2.5rem + 62px);
@@ -61,3 +58,9 @@ h2 {
     margin-bottom: 0;
 }
 
+.project__date-wrapper {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column; 
+    margin-bottom: 2rem;
+}

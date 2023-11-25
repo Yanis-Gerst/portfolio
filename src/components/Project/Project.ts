@@ -12,7 +12,7 @@ import { handlerHover } from "../../script/customCursor.ts";
 
 type IProjectPreview = Omit<
   IProjectData,
-  "screenshots" | "introduction" | "link"
+  "screenshots" | "introduction" | "link" | "date"
 >;
 
 export default class Project extends HTMLElement {

@@ -28,6 +28,7 @@ export type IProjectData = {
   introduction: string;
   techTags: string[];
   appImg: IAppImg;
+  date: string;
   screenshots: IProjectScreenshot[];
 };
 

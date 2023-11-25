@@ -36,6 +36,11 @@ export const renderDetailsPage = (projectName: IProjectName) => {
     findElementOrThrowError<HTMLUListElement>("#tech-tags");
   renderTags(techTagsWrapper, currentProject.techTags);
 
+  const dateParagraph = findElementOrThrowError<HTMLParagraphElement>(
+    ".project__date-wrapper p"
+  );
+  dateParagraph.textContent = currentProject.date;
+
   renderScreenshots(currentProject.screenshots);
 };
 

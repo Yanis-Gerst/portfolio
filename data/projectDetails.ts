@@ -24,12 +24,13 @@ export default {
       "Authentique clone de l'application Things 3 étant disponible uniquement dans l'app store",
     link: "https://yanis.gerst.io/things-clone",
     introduction:
-      "Ce projet a pour but de reproduire l'expérience utilisateur que l'on peut avoir en utilisant Things sur un navigateur. Cela m'a aussi permis d'apprendre les bases et les bonnes pratiques dans la conceptions d'API REST.",
+      "Mon clone de Things 3 reproduit l’expérience d'un gestionnaire de tâches personnel primé qui vous aide à organiser votre journée, gérer vos projets et progresser efficacement vers vos objectifs.",
     techTags: ["Next.Js", "Typescript", "TailwindCss", "Golang", "MongoDB"],
     appImg: {
       alt: "",
       all: thingsDark,
     },
+    date: "Juillet 2023",
     screenshots: [
       {
         title: "L'application Originel",
@@ -62,6 +63,7 @@ export default {
       alt: "",
       all: studentDrivePlatformImg,
     },
+    date: "Janvier 2023",
     screenshots: [
       {
         shots: [
@@ -102,12 +104,11 @@ export default {
       "\n" +
       "La stack technique est très simple, du pur VanillaJs et le rendu du jeu est fait avec les canva HTML\n.",
     techTags: ["HTML", "CSS", "VanillaJS"],
-    libraryTags: [],
-    features: ["Combat System", "Cinematic Scene", "PNG"],
     appImg: {
       all: pizzaLegendImg,
       alt: "Screenshot of a fight in my pizza legend game",
     },
+    date: "Mars 2021",
     screenshots: [
       {
         shots: [
