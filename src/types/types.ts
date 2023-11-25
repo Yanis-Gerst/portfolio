@@ -5,16 +5,37 @@ export type IProjectName = "things" | "pizzaLegend" | "studentPlatform";
 export type allThemeImg = {
   all: string;
 };
+
 export type byThemeImages = {
-  [key in Themes]: string;
+  light: string;
+  dark: string;
 };
-export type IAltImg = {
+
+export type IAppImg = {
+  all: string;
   alt: string;
 };
-export type IAppImg = (allThemeImg | byThemeImages) & IAltImg;
+
+export type IImg = {
+  alt: string;
+  src: string;
+};
+
 export type IProjectData = {
   title: string;
   resume: string;
+  link: string;
+  introduction: string;
   techTags: string[];
   appImg: IAppImg;
+  screenshots: IProjectScreenshot[];
 };
+
+export type IProjectScreenshot =
+  | {
+      title: string;
+      shots: IImg[];
+    }
+  | {
+      shots: IImg[];
+    };

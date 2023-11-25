@@ -10,10 +10,15 @@ import { IProjectData, IProjectName } from "../../types/types.ts";
 import { renderAppImg } from "../../utils/renderingMethods.ts";
 import { handlerHover } from "../../script/customCursor.ts";
 
+type IProjectPreview = Omit<
+  IProjectData,
+  "screenshots" | "introduction" | "link"
+>;
+
 export default class Project extends HTMLElement {
   shadow: ShadowRoot;
   name: IProjectName;
-  projectData: IProjectData;
+  projectData: IProjectPreview;
   onThemeListener: Function | undefined;
 
   constructor() {
@@ -108,7 +113,7 @@ export default class Project extends HTMLElement {
     observer.observe(project);
   }
 
-  getProjectData(): IProjectData {
+  getProjectData(): IProjectPreview {
     const project = projectData[this.name];
 
     return {

@@ -1,25 +1,19 @@
 import projectData from "../../data/projectDetails.ts";
-import { IAppImg, IProjectName } from "../types/types.ts";
+import {
+  IAppImg,
+  IImg,
+  IProjectData,
+  IProjectName,
+  IProjectScreenshot,
+} from "../types/types.ts";
 import { findElementOrThrowError, renderTags } from "../utils/utils.ts";
 import { renderAppImg } from "../utils/renderingMethods.ts";
 import githubDarkSvg from "../assets/GithubDarkIcon.svg";
 import githubLightSvg from "../assets/GithubIcon.svg";
+import { createElementWithAttribute } from "../utils/domManipulation.ts";
 
-type IProject = {
-  title: string;
-  resume: string;
-  link: string;
-  introduction: string;
-  techTags: string[];
-  libraryTags: string[];
-  features: string[];
-  appImg: IAppImg;
-  goals: string[];
-  lesson: string[];
-  spotlight: string[];
-};
 export const renderDetailsPage = (projectName: IProjectName) => {
-  const currentProject: IProject = projectData[projectName];
+  const currentProject: IProjectData = projectData[projectName];
 
   const githubDarkImg =
     findElementOrThrowError<HTMLImageElement>(".github--dark");
@@ -42,29 +36,7 @@ export const renderDetailsPage = (projectName: IProjectName) => {
     findElementOrThrowError<HTMLUListElement>("#tech-tags");
   renderTags(techTagsWrapper, currentProject.techTags);
 
-  const libraryTagsWrapper =
-    findElementOrThrowError<HTMLUListElement>("#library-tags");
-
-  if (!renderTags(libraryTagsWrapper, currentProject.libraryTags)) {
-    const projectTagsToRemove = findElementOrThrowError(
-      ".project__tags:last-child",
-    );
-    projectTagsToRemove.remove();
-  }
-  renderFeatures(currentProject.features);
-
-  const imgWrapper = findElementOrThrowError(".features__img");
-
-  renderAppImg(imgWrapper, currentProject.appImg);
-
-  const goalsTextWrapper = findElementOrThrowError(".goals__text");
-  renderText(goalsTextWrapper, currentProject.goals);
-
-  const spotlightTextWrapper = findElementOrThrowError(".spotlight__text");
-  renderText(spotlightTextWrapper, currentProject.spotlight);
-
-  const lessonTextWrapper = findElementOrThrowError("#lesson");
-  renderText(lessonTextWrapper, currentProject.lesson);
+  renderScreenshots(currentProject.screenshots);
 };
 
 const renderFeatures = (features: string[]) => {
@@ -82,5 +54,41 @@ const renderText = (wrapper: HTMLElement, texts: string[]) => {
     const p = document.createElement("p");
     p.textContent = text;
     wrapper.appendChild(p);
+  });
+};
+
+const renderScreenshots = (screenshots: IProjectScreenshot[]) => {
+  const projectScreenshotsWrapper = findElementOrThrowError(
+    "#project-screenshot"
+  );
+
+  screenshots.forEach((screenshot) => {
+    const { title, shots } = screenshot as { title: string; shots: IImg[] };
+
+    let wrapper: HTMLDivElement | null = null;
+    if (title) {
+      wrapper = createElementWithAttribute("div", {
+        className: "project-screenshots__section",
+      });
+      const headerTitle = document.createElement("h1");
+      headerTitle.textContent = title;
+      wrapper.appendChild(headerTitle);
+    }
+
+    shots.forEach((shot) => {
+      const shotImg = createElementWithAttribute("img", {
+        src: shot.src,
+        alt: shot.alt,
+      });
+      if (wrapper) {
+        wrapper.appendChild(shotImg);
+        return;
+      }
+      projectScreenshotsWrapper.appendChild(shotImg);
+    });
+
+    if (wrapper) {
+      projectScreenshotsWrapper.appendChild(wrapper);
+    }
   });
 };
