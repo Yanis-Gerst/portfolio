@@ -1,5 +1,3 @@
-import { Themes } from "../components/Maps/types.ts";
-
 export type IProjectName = "things" | "pizzaLegend" | "studentPlatform";
 
 export type allThemeImg = {

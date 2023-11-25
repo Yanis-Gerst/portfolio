@@ -1,7 +1,5 @@
-import { byThemeImages, IAppImg } from "../types/types.ts";
+import { IAppImg } from "../types/types.ts";
 import { createElementWithAttribute } from "./domManipulation.ts";
-import { themes } from "../main.ts";
-import { getReverseTheme } from "../script/theme.ts";
 
 export const renderAppImg = (wrapper: HTMLElement, appImg: IAppImg) => {
   const { all: allThemeImg, alt } = appImg;
