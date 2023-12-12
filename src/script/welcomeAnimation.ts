@@ -18,7 +18,6 @@ export const addTextRevealAnimation = () => {
       welcomeAnimationState.isPlayed = true;
     },
   });
-  console.log(splitText.chars);
   timeline.set(chars, { yPercent: 120 });
   timeline.to(chars, {
     yPercent: 0,

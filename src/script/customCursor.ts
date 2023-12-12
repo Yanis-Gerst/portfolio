@@ -17,7 +17,6 @@ export const handlerHover = (
   dom: Document | ShadowRoot,
   classNames: string[] = []
 ) => {
-  console.log(classNames);
   dom
     .querySelectorAll("button")
     .forEach((button) => handleClassOnHoverables(button, classNames));

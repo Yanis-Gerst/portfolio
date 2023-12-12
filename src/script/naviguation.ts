@@ -25,27 +25,30 @@ export const navConfigs: INavConfig[] = [
 ];
 
 export const handleAnchorLinksToIdElement = (anchors: HTMLAnchorElement[]) => {
-  anchors.forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      let linkToIdOfElement = anchor.getAttribute("href");
-      if (!linkToIdOfElement) return;
-      linkToIdOfElement = linkToIdOfElement.replace("#", "");
-      if (window.location.pathname === "/") {
-        scrollToElement(linkToIdOfElement);
-        return;
-      }
-      return navigate("/", () => {
-        setTimeout(() => scrollToElement(linkToIdOfElement as string), 0);
+  anchors
+    .filter((anchor) => anchor.href.includes("#"))
+    .forEach((anchor) => {
+      console.log(anchor);
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+        let linkToIdOfElement = anchor.getAttribute("href");
+        if (!linkToIdOfElement) return;
+        linkToIdOfElement = linkToIdOfElement.replace("#", "");
+        if (window.location.pathname === "/") {
+          scrollToElement(linkToIdOfElement);
+          return;
+        }
+        return navigate("/", () => {
+          setTimeout(() => scrollToElement(linkToIdOfElement as string), 0);
+        });
       });
     });
-  });
 };
 
 const scrollToElement = (eltId: string) => {
   const elementToScrollTo = document.getElementById(eltId) as HTMLElement;
   const config = navConfigs.find(
-    (config) => config.scrollTo === eltId,
+    (config) => config.scrollTo === eltId
   ) as INavConfig;
 
   if (config.block === "start") {

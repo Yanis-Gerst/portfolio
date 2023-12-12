@@ -17,6 +17,12 @@ import pizzaLegendSecondMap from "../src/assets/pizzaLegend/PizzaLegendSecondMap
 import pizzaLegendThirdMap from "../src/assets/pizzaLegend/PizzaLegendThirdMap.png";
 import pizzaLegendFight from "../src/assets/pizzaLegend/PizzaLegendCombat.png";
 
+import heroQovery from "../src/assets/qovery/hero-section.png";
+import howQovery from "../src/assets/qovery/how.png";
+import usageQovery from "../src/assets/qovery/usage.png";
+import keysQovery1 from "../src/assets/qovery/keys1.png";
+import keysQovery2 from "../src/assets/qovery/keys2.png";
+
 export default {
   things: {
     title: "Web clone of Things 3",
@@ -93,7 +99,7 @@ export default {
   },
   pizzaLegend: {
     title: "Pizza Legend",
-    link: "",
+    link: "yanis-gerst.github.io/Pizza-Legend/",
     resume:
       "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et crée ma petite histoire",
     introduction:
@@ -116,6 +122,46 @@ export default {
           { src: pizzaLegendSecondMap, alt: "la deuxième map de pizza legend" },
           { src: pizzaLegendFight, alt: "Une scène de combat de pizza legend" },
           { src: pizzaLegendThirdMap, alt: "la troisième map de pizza legend" },
+        ],
+      },
+    ],
+  },
+  qovery: {
+    title: "Qovery",
+    link: "https://qovery-implementation.vercel.app/",
+    resume:
+      "Une implémentation de la landing page de Qovery avec l'ajout d'animations",
+    introduction:
+      "Ce projet était un défi à réaliser en 6 heures et a été une réussite, impliquant la création d'une interface respectant les principes du design et capable de s'adapter à toute taille d'écran.",
+    techTags: ["HTML", "CSS", "VanillaJS"],
+    appImg: {
+      alt: "Hero header de qovery",
+      all: heroQovery,
+    },
+    date: "Décembre 2020",
+    screenshots: [
+      {
+        shots: [
+          {
+            src: heroQovery,
+            alt: "Hero header de qovery",
+          },
+          {
+            src: howQovery,
+            alt: "La section qui explique comment fonctionne qovery",
+          },
+          {
+            src: usageQovery,
+            alt: "La section qui montre un exemple d'utilisation de qovery",
+          },
+          {
+            src: keysQovery1,
+            alt: "Les 2 premières fonctionnalités clés de qovery",
+          },
+          {
+            src: keysQovery2,
+            alt: "Les 2 premières fonctionnalités clés de qovery ainsi que leurs partenaires",
+          },
         ],
       },
     ],

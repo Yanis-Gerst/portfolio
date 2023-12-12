@@ -62,6 +62,7 @@ export const navigate = async (
   path: string,
   callback: Function | undefined
 ) => {
+  console.log(path);
   window.history.pushState({}, "", path);
   await handleLocation();
   if (callback) callback();

@@ -47,6 +47,10 @@ export const routes: IRoute = {
     ...projectDetails,
     js: () => renderDetailsPage("studentPlatform"),
   },
+  "/qovery": {
+    ...projectDetails,
+    js: () => renderDetailsPage("qovery"),
+  },
 };
 
 customElements.define("custom-header", CustomHeader);

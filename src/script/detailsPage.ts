@@ -26,6 +26,10 @@ export const renderDetailsPage = (projectName: IProjectName) => {
   const projectLink =
     findElementOrThrowError<HTMLAnchorElement>(".project-intro a");
   projectLink.href = currentProject.link;
+  projectLink.textContent = currentProject.link;
+  projectLink.onclick = () => {
+    window;
+  };
 
   const projectIntroduction = findElementOrThrowError(".project-intro p");
   projectIntroduction.textContent = currentProject.introduction;

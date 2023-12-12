@@ -1,4 +1,8 @@
-export type IProjectName = "things" | "pizzaLegend" | "studentPlatform";
+export type IProjectName =
+  | "things"
+  | "pizzaLegend"
+  | "studentPlatform"
+  | "qovery";
 
 export type allThemeImg = {
   all: string;
