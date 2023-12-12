@@ -14,9 +14,11 @@ import detailsPageCss from "./styles/details/detailsPage.css?inline";
 import detailsPageHTML from "./pages/details.html?url";
 import notFoundPageHTML from "./pages/notFound.html?url";
 import notFoundPageCSS from "./styles/notFound/notFound.css?inline";
+import { inject } from "@vercel/analytics";
 
 export const appId = "app";
 export const themes: ReadonlyArray<Themes> = ["light", "dark"] as const;
+inject();
 
 const projectDetails = {
   html: detailsPageHTML,
