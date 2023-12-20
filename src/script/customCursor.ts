@@ -13,7 +13,7 @@ const followMouseCursor = (e: MouseEvent) => {
   });
 };
 
-export const handlerHover = <K extends HTMLElementTagNameMap>(
+export const handlerHover = (
   dom: Document | ShadowRoot,
   classNames: string[] = [],
   htmlTag: any = "a"
