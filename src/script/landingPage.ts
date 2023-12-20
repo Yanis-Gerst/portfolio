@@ -20,17 +20,24 @@ const hiddenScrollArrowOnScroll = () => {
 };
 
 const handleWelcomeAnimation = () => {
-  const { isPlayed } = welcomeAnimationState;
+  const animationDate = window.localStorage.getItem("animationDate");
   const welcomeContainer = document.querySelector(
     ".pre-hero"
   ) as HTMLDivElement;
   if (!welcomeContainer) throw Error("can't find welcome container");
 
-  if (isPlayed) {
+  if (welcomeAnimationAldreadyPlay(animationDate)) {
     welcomeContainer.style.display = "none";
     return;
   }
   addTextRevealAnimation();
+};
+
+const welcomeAnimationAldreadyPlay = (animationData: string | null) => {
+  if (!animationData) return false;
+  const minuteSinceLastAnimation =
+    (Date.now() - parseInt(animationData)) / (1000 * 60);
+  return minuteSinceLastAnimation < 5;
 };
 
 export const setupLandingPage = () => {

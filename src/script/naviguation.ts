@@ -8,17 +8,17 @@ export type INavConfig = {
 
 export const navConfigs: INavConfig[] = [
   {
-    label: "About",
+    label: "À props de moi",
     scrollTo: "about",
     block: "center",
   },
   {
-    label: "Work",
+    label: "Mes projets",
     scrollTo: "project",
     block: "start",
   },
   {
-    label: "Contact",
+    label: "Contactez moi",
     scrollTo: "contact",
     block: "center",
   },
@@ -28,7 +28,6 @@ export const handleAnchorLinksToIdElement = (anchors: HTMLAnchorElement[]) => {
   anchors
     .filter((anchor) => anchor.href.includes("#"))
     .forEach((anchor) => {
-      console.log(anchor);
       anchor.addEventListener("click", (e) => {
         e.preventDefault();
         let linkToIdOfElement = anchor.getAttribute("href");

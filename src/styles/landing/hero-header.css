@@ -93,6 +93,13 @@ section {
     margin-bottom: 13.5rem;
 }
 
+.desktop--hero-full-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 650px;
+}
+
 
 @media screen and (min-width: 1050px) {
     .hero__content {
@@ -101,17 +108,20 @@ section {
 
     .desktop--hero-full-page {
         height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         position: relative;
+        padding-bottom: 1rem;
     }
 
     .content__main--sub {
         max-width: 350px;
     }
 }
-    
+
+@media screen and (max-height: 700px) {
+    .desktop--hero-full-page {
+        padding-bottom: 0;
+    }
+}
 
 @media screen and (min-width: 1050px) and (min-height: 900px) {
     #hero-header {
@@ -151,9 +161,7 @@ section {
         height: 100%;
     }
 
-    .desktop--hero-full-page {
-        min-height: 650px;
-    }
+   
     
     .hero-main {
         flex-shrink: 0;

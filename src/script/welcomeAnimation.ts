@@ -15,7 +15,7 @@ export const addTextRevealAnimation = () => {
 
   const timeline = gsap.timeline({
     onComplete: () => {
-      welcomeAnimationState.isPlayed = true;
+      window.localStorage.setItem("animationDate", `${Date.now()}`);
     },
   });
   timeline.set(chars, { yPercent: 120 });

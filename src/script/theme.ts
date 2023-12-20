@@ -4,7 +4,7 @@ export const getInitTheme = (): Themes => {
   const currentTheme = getCurrentTheme();
 
   if (currentTheme) return currentTheme;
-
+  console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
   if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -15,7 +15,8 @@ export const getInitTheme = (): Themes => {
 };
 
 export const getCurrentTheme = () => {
-  return document.body.getAttribute("data-theme") as Themes | null;
+  return (document.body.getAttribute("data-theme") ||
+    window.localStorage.getItem("theme")) as Themes | null;
 };
 export const setThemeOfApp = () => {
   document.body.setAttribute("data-theme", getInitTheme());

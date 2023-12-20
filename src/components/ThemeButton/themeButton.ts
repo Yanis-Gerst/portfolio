@@ -54,6 +54,7 @@ export default class ThemeButton extends HTMLElement {
       throw new Error("themButton Component theme is not defined");
     this.theme = getReverseTheme(this.theme);
     document.body.setAttribute(ThemeButton.themeAttribute, this.theme);
+    window.localStorage.setItem("theme", this.theme);
     this.button.innerHTML = this.icons[this.theme];
     const themeChangeEvent = new Event("theme-change");
     window.dispatchEvent(themeChangeEvent);
