@@ -1,14 +1,14 @@
 :host {
     width: 100%;
+    grid-column: span 2;
 }
 
 .social-link {
     display: grid;
     place-items: center;
-    padding: 1rem 0;
     border-radius: var(--rounded);
     position: relative;
-
+    height: 100%;
 }
 
 .social-link::after {
@@ -19,14 +19,15 @@
     background-repeat: no-repeat;
     width: 16px;
     height: 16px;
-
     position: absolute;
-    transform: translateY(calc(32px - 50%)) translateX(calc(32px + 50% + 0.25rem));
+    transform: translateY(calc(12px - 30%)) translateX(calc(12px + 0.5rem));
     border-radius: var(--rounded);
-
 }
 
-
+::slotted(img) {
+    width: 24px;
+    height: 24px;
+}
 
 .social-link--github {
     background-color: var(--background-secondary);
@@ -39,4 +40,18 @@
 .social-link--linkedin:focus-visible {
     outline-color: var(--content);
 
+}
+
+@media screen and (min-width: 1050px) {
+    ::slotted(img) {
+        width: 32px;
+        height: 32px;
+    }
+
+
+.social-link::after {
+
+    transform: translateY(calc(16px - 30%)) translateX(calc(16px + 0.5rem));
+
+}
 }

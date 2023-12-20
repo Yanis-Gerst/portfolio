@@ -13,14 +13,15 @@ const followMouseCursor = (e: MouseEvent) => {
   });
 };
 
-export const handlerHover = (
+export const handlerHover = <K extends HTMLElementTagNameMap>(
   dom: Document | ShadowRoot,
-  classNames: string[] = []
+  classNames: string[] = [],
+  htmlTag: any = "a"
 ) => {
   dom
     .querySelectorAll("button")
     .forEach((button) => handleClassOnHoverables(button, classNames));
-  dom.querySelectorAll("a").forEach((link) => {
+  dom.querySelectorAll(htmlTag).forEach((link) => {
     if (link.querySelectorAll("button").length > 0) return;
     handleClassOnHoverables(link, classNames);
   });

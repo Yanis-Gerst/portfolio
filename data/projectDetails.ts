@@ -1,5 +1,5 @@
 import thingsDark from "../src/assets/ThingsClone-dark.png";
-import studentDrivePlatformImg from "../src/assets/studentDrive.png";
+import studentDrivePlatformImg from "../src/assets/UniNotes/landingPage.png";
 import pizzaLegendImg from "../src/assets/pizzaLegend.png";
 import landingPageUniNotes from "../src/assets/UniNotes/landingPage.png";
 import featuresUniNotes from "../src/assets/UniNotes/features.png";
@@ -58,7 +58,7 @@ export default {
     ],
   },
   studentPlatform: {
-    title: "Student Drive Platform",
+    title: "UniNotes",
     link: "",
     resume:
       "Un Drive dédié aux étudiants d'AMU afin de partager des fiches de révisions, d'exercices et de corrections",

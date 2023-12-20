@@ -1,3 +1,4 @@
+import { handlerHover } from "../../script/customCursor";
 import {
   createElementWithAttribute,
   createShadowDomWithStyle,
@@ -56,12 +57,11 @@ export default class ServicesAccordion extends HTMLElement {
     return contentWrapper;
   }
 
-  // connectedCallback() {
-  //   console.log("cc");
-  //   this.shadow.querySelectorAll("details").forEach((detailElt) => {
-  //     detailElt.addEventListener("click", () => {
-  //       detailElt.classList.toggle("open");
-  //     });
-  //   });
-  // }
+  connectedCallback() {
+    handlerHover(
+      this.shadow,
+      ["custom-cursor--hover-emoji", "custom-cursor--hover-eye"],
+      "summary"
+    );
+  }
 }

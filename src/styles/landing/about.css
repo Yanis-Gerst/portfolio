@@ -20,6 +20,37 @@
     border-radius: var(--rounded);
 }
 
+.about_bento {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, 46px);
+    gap: 12px;
+}
+
+.bento__empty-square {
+    background-color: var(--background-secondary);
+    border-radius: var(--rounded);
+    width: 100%;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento__tools-icon {
+    background-color: var(--background-secondary);
+    border-radius: var(--rounded);
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.bento__tools-icon:first-of-type img {
+    height: 24px;
+    width: auto;
+}
+.bento__tools-icon img {
+    width: 24px;
+}
+
 .gmnoprint, .gm-style-cc {
     display: none;
 }
@@ -47,8 +78,28 @@
         max-width: 450px;
     }
 
+    .about__r-side-desk {
+        display: flex;
+        flex-direction: column;
+    }
+
     #google_map {
         min-width: 500px;
         height: 245px;
+        flex-basis: 60%;
+    }
+
+    .about_bento {
+        flex-basis: 40%;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .bento__tools-icon:first-of-type img {
+        height: 32px;
+        width: auto;
+    }
+
+    .bento__tools-icon img {
+        width: 32px;
     }
 }
