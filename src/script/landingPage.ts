@@ -1,9 +1,6 @@
 import { setupParallax } from "./parallax.ts";
 import { renderMap } from "../components/Maps/maps.ts";
-import {
-  addTextRevealAnimation,
-  welcomeAnimationState,
-} from "./welcomeAnimation.ts";
+import { addTextRevealAnimation } from "./welcomeAnimation.ts";
 
 const hiddenScrollArrowOnScroll = () => {
   window.addEventListener("scroll", () => {

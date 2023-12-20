@@ -2,10 +2,6 @@ import gsap from "gsap";
 import { SplitText } from "../lib/splitText";
 import { CustomEase } from "gsap/CustomEase";
 
-export const welcomeAnimationState = {
-  isPlayed: false,
-};
-
 gsap.registerPlugin(CustomEase);
 
 export const addTextRevealAnimation = () => {
