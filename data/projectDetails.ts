@@ -99,7 +99,7 @@ export default {
   },
   pizzaLegend: {
     title: "Pizza Legend",
-    link: "yanis-gerst.github.io/Pizza-Legend/",
+    link: "https://yanis-gerst.github.io/Pizza-Legend/",
     resume:
       "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et crée ma petite histoire",
     introduction:
