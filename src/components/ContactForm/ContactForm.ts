@@ -63,7 +63,7 @@ export default class ContactForm extends HTMLElement {
     });
 
     const sectionTitle = createElementWithAttribute("h1", {});
-    sectionTitle.textContent = "Contact Me";
+    sectionTitle.textContent = "Contactez moi";
 
     const personalEmailWrapper = createElementWithAttribute("div", {
       className: "personal-mail-wrapper",

@@ -44,3 +44,8 @@
   background-image: url("/Wave\ emoji.png");
 }
 
+@media screen and (max-width: 1050px) {
+  .custom-cursor {
+    display: none;
+  }
+}
