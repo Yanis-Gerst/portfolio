@@ -38,7 +38,7 @@ export default class CustomHeader extends HTMLElement {
     const logo = createElementWithAttribute("h1", {
       className: "header__logo",
     });
-    logo.textContent = "Gerst Yanis";
+    logo.textContent = "Yanis Gerst";
 
     const navContainer = createElementWithAttribute("nav", {
       className: "wrapper__navs",
