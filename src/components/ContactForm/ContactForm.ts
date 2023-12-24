@@ -26,19 +26,19 @@ type IInputConfig = {
 const inputsConfig: IInputConfig[] = [
   {
     type: "text",
-    label: "Your name",
+    label: "Votre nom",
     name: "name",
     required: "true",
   },
   {
     type: "email",
-    label: "Your Email",
+    label: "Votre Email",
     name: "email",
     required: "true",
   },
   {
     type: "text",
-    label: "Your Message",
+    label: "Votre Message",
     name: "message",
     required: "true",
     tag: "textarea",

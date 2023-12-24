@@ -8,7 +8,7 @@ export type INavConfig = {
 
 export const navConfigs: INavConfig[] = [
   {
-    label: "À props de moi",
+    label: "À propos de moi",
     scrollTo: "about",
     block: "center",
   },

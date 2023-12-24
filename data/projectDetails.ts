@@ -101,14 +101,14 @@ export default {
     title: "Pizza Legend",
     link: "https://yanis-gerst.github.io/Pizza-Legend/",
     resume:
-      "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et crée ma petite histoire",
+      "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et créer ma petite histoire",
     introduction:
       "\n" +
       "Pizza Legend est un jeu qui s'inspire du système de combat de Pokémon, avec donc la possibilité d'avoir une équipe de pizza. Contrairement, on peut fabriquer les pizzas et non pas les capturer et on retrouve un système de tour par tour avec des pizzas de différents types. \n" +
       "\n" +
       "Dans ce projet, j'ai repris les assets et la base de code écrit par Drew Conley puis j'ai rajouté des fonctionnalités et remixer à ma propre sauce. En ajoutant le système de type, en faisant un système de cinématique, en refaisant les séquence de mouvements de PNJ, en ajoutant une nouvelle pizza dans le jeu, et plus encore.\n" +
       "\n" +
-      "La stack technique est très simple, du pur VanillaJs et le rendu du jeu est fait avec les canva HTML\n.",
+      "La stack technique est très simple, du pur VanillaJs et le rendu du jeu est fait avec les canvas HTML\n.",
     techTags: ["HTML", "CSS", "VanillaJS"],
     appImg: {
       all: pizzaLegendImg,
