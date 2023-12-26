@@ -1,6 +1,6 @@
 # General
 
-I built this website using vanilla JavaScript to learn how to use web components and to compare it with other frameworks.# Technologies
+I built this website using vanilla JavaScript to learn how to use web components and to compare it with other frameworks.
 
 # Technologies
 
