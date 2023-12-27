@@ -16,6 +16,7 @@ import notFoundPageHTML from "./pages/notFound.html?url";
 import notFoundPageCSS from "./styles/notFound/notFound.css?inline";
 import { inject } from "@vercel/analytics";
 import ServicesAccordion from "./components/ServicesAccordion/ServicesAccordion.ts";
+import ProjectShots from "./components/ProjectShots/ProjectShots.ts";
 
 export const appId = "app";
 export const themes: ReadonlyArray<Themes> = ["light", "dark"] as const;
@@ -61,6 +62,7 @@ customElements.define("my-project", Project);
 customElements.define("theme-button", ThemeButton);
 customElements.define("social-link", socialLink);
 customElements.define("service-accordion", ServicesAccordion);
+customElements.define("project-shots", ProjectShots);
 
 handleLocation().then(() => {
   setupCustomCursor();

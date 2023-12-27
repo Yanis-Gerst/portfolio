@@ -25,10 +25,10 @@ export default class SubmitButton {
       className: "button-text-container",
     });
     const buttonContents = stringToParagraph([
-      "Sent",
-      "Send Message",
-      "Sending",
-      "Sent",
+      "Envoyé",
+      "Envoyer",
+      "Envoi en cours",
+      "Envoyé",
     ]);
 
     const loadingCirlce = createElementWithAttribute("div", {

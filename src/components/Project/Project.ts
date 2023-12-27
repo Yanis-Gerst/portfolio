@@ -5,10 +5,16 @@ import {
 import style from "./style.css?inline";
 import { route } from "../../script/router.ts";
 import projectData from "../../../data/projectDetails.ts";
-import { toKebabCase, renderTags } from "../../utils/utils.ts";
+import {
+  toKebabCase,
+  renderTags,
+  findElementOrThrowError,
+} from "../../utils/utils.ts";
 import { IProjectData, IProjectName } from "../../types/types.ts";
 import { renderAppImg } from "../../utils/renderingMethods.ts";
 import { handlerHover } from "../../script/customCursor.ts";
+import gsap from "gsap";
+import { DisplayShots } from "./DisplayShots.ts";
 
 type IProjectPreview = Omit<
   IProjectData,
@@ -125,9 +131,28 @@ export default class Project extends HTMLElement {
   }
 
   connectedCallback() {
-    handlerHover(this.shadow, [
-      "custom-cursor--hover-emoji",
-      "custom-cursor--hover-eye",
-    ]);
+    const projectShots = document.querySelector(`.project-shots--${this.name}`);
+    if (!projectShots) return;
+    const customCursor = findElementOrThrowError(".custom-cursor");
+    const projectImg = this.shadow.querySelector("img");
+    const projectLink = this.shadow.querySelector(".project__link");
+    const displayShotsHandler = new DisplayShots(projectShots);
+
+    this.shadow.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("mouseover", () => {
+        projectImg?.classList.add("project-img-gray");
+        customCursor?.classList.add("custom-cursor--border-only");
+        projectLink?.classList.add("project__link--hover");
+        displayShotsHandler.displayShot();
+        displayShotsHandler.startInterval();
+      });
+
+      link.addEventListener("mouseleave", () => {
+        projectImg?.classList.remove("project-img-gray");
+        customCursor?.classList.remove("custom-cursor--border-only");
+        projectLink?.classList.remove("project__link--hover");
+        displayShotsHandler.clearInterval();
+      });
+    });
   }
 }

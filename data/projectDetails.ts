@@ -25,9 +25,8 @@ import keysQovery2 from "../src/assets/qovery/keys2.png";
 
 export default {
   things: {
-    title: "Web clone of Things 3",
-    resume:
-      "Authentique clone de l'application Things 3 étant disponible uniquement dans l'app store",
+    title: "Things 3",
+    resume: "Authentique clone de l'application Things 3",
     link: "https://yanis.gerst.io/things-clone",
     introduction:
       "Mon clone de Things 3 reproduit l’expérience d'un gestionnaire de tâches personnel primé qui vous aide à organiser votre journée, gérer vos projets et progresser efficacement vers vos objectifs.",

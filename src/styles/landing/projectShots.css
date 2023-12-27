@@ -1,0 +1,17 @@
+.project-shots {
+    position: relative;
+    border: 1px;
+}
+
+.project-shots img {
+    max-width: 450px;
+    position: absolute;
+    top: calc(24px + 1rem);
+    left: 0;
+    opacity: 0;
+    border: 2px solid rgba(237, 237, 237);
+}
+
+.projects-shots--visible {
+    opacity: 1 !important;
+}

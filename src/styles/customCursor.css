@@ -12,10 +12,15 @@
     z-index: 1000;
 }
 
+
 .custom-cursor--hover {
   mix-blend-mode: difference;
   transform: scale(2.5);
+}
 
+.custom-cursor--border-only {
+  background-color: transparent;
+  border: 1px solid var(--content);
 }
 
 .custom-cursor--hover-emoji {

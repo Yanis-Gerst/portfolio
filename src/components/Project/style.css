@@ -28,6 +28,10 @@ img {
     width: 100%;
 }
 
+.project-img-gray {
+    filter: grayscale(1);
+}
+
 #project-template a {
     font-size: 2rem;
     margin-bottom: .5rem;
@@ -56,17 +60,19 @@ img {
     transition: transform .3s ease-out;
 }
 
-.project__link:hover {
+
+.project__link--hover {
     color: var(--primary-color);
 }
 
-.project__link:hover svg {
+.project__link--hover svg {
     transform: translateY(-200%) translateX(2px);
 }
 
-.project__link:hover path {
+.project__link--hover path {
     stroke: var(--primary-color);
 }
+
 
 .project--visible .project__link {
     opacity: 0;
@@ -121,7 +127,7 @@ svg path {
         transform: translateY(-130%) scale(2);
     }
 
-    .project__link:hover svg {
+    .project__link--hover svg {
         transform: translateY(-230%) translateX(2px) scale(2);
     }
     

@@ -3,17 +3,21 @@ import { renderMap } from "../components/Maps/maps.ts";
 import { addTextRevealAnimation } from "./welcomeAnimation.ts";
 
 const hiddenScrollArrowOnScroll = () => {
-  window.addEventListener("scroll", () => {
-    const scrollArrow = document.querySelector(
-      ".scroll-arrow"
-    ) as HTMLDivElement;
-    if (!scrollArrow) return;
-    if (window.scrollY > 100) {
-      scrollArrow.style.opacity = "0";
-      return;
-    }
-    scrollArrow.style.opacity = "1";
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollArrow = document.querySelector(
+        ".scroll-arrow"
+      ) as HTMLDivElement;
+      if (!scrollArrow) return;
+      if (window.scrollY > 100) {
+        scrollArrow.style.opacity = "0";
+        return;
+      }
+      scrollArrow.style.opacity = "1";
+    },
+    { passive: true }
+  );
 };
 
 const handleWelcomeAnimation = () => {
