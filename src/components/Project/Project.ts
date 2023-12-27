@@ -12,8 +12,6 @@ import {
 } from "../../utils/utils.ts";
 import { IProjectData, IProjectName } from "../../types/types.ts";
 import { renderAppImg } from "../../utils/renderingMethods.ts";
-import { handlerHover } from "../../script/customCursor.ts";
-import gsap from "gsap";
 import { DisplayShots } from "./DisplayShots.ts";
 
 type IProjectPreview = Omit<
