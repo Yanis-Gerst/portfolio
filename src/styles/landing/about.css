@@ -91,7 +91,7 @@
 
     .about_bento {
         flex-basis: 40%;
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: repeat(2, minmax(64px, 1fr));
     }
 
     .bento__tools-icon:first-of-type img {
