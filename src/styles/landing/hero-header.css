@@ -115,6 +115,10 @@ section {
     .content__main--sub {
         max-width: 350px;
     }
+
+    .content__main--big {
+        min-width: 450px;
+    }
 }
 
 @media screen and (max-height: 700px) {
@@ -146,6 +150,8 @@ section {
         gap: 2rem;
         margin-bottom: 3.5rem;
     }
+
+   
 
     .hero-cta {
         margin-top:  4.5rem;
