@@ -7,7 +7,7 @@
     height: 24px;
     border-radius: 50%;
     background-color: var(--content);
-    transition: transform 350ms ease, background-color 50ms ease-out;
+    transition: transform 350ms ease, background-color 50ms ease-out, height 350ms ease;
     transform: translate(-50%, -50%);
     z-index: 1000;
 }
@@ -21,6 +21,8 @@
 .custom-cursor--border-only {
   background-color: transparent;
   border: 1px solid var(--content);
+  border-radius: 10px;
+  height: 32px;
 }
 
 .custom-cursor--hover-emoji {
