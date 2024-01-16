@@ -34,19 +34,31 @@ const handleClassOnHoverables = (
   const cursor = document.querySelector(".custom-cursor") as HTMLElement;
   if (!cursor) return;
   element.addEventListener("mouseenter", (e) => {
-    toogleHoverClass(cursor, classNames);
+    addHoverClass(cursor, classNames);
     e.stopPropagation();
   });
   element.addEventListener("mouseleave", (e) => {
-    toogleHoverClass(cursor, classNames);
+    removeHoverClass(cursor, classNames);
     e.stopPropagation();
   });
 };
 
-const toogleHoverClass = (cursor: HTMLElement, classNames: string[]) => {
+const methodOnHoverClass = (
+  cursor: HTMLElement,
+  classNames: string[],
+  method: "add" | "remove"
+) => {
   const customCursorHoverClass = "custom-cursor--hover";
-  cursor.classList.toggle(customCursorHoverClass);
-  classNames.forEach((className) => cursor.classList.toggle(className));
+  cursor.classList[method](customCursorHoverClass);
+  classNames.forEach((className) => cursor.classList[method](className));
+};
+
+const addHoverClass = (cursor: HTMLElement, classNames: string[]) => {
+  methodOnHoverClass(cursor, classNames, "add");
+};
+
+const removeHoverClass = (cursor: HTMLElement, classNames: string[]) => {
+  methodOnHoverClass(cursor, classNames, "remove");
 };
 
 export const setupCustomCursor = () => {
