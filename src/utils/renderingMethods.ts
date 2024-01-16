@@ -8,18 +8,9 @@ export const renderAppImg = (wrapper: HTMLElement, appImg: IAppImg) => {
     const img = createElementWithAttribute("img", {
       src: allThemeImg,
       alt,
+      loading: "lazy",
     });
     wrapper.appendChild(img);
     return;
   }
-
-  // themes.forEach((theme) => {
-  //   const themeImg = createElementWithAttribute("img", {
-  //     src: (appImg as byThemeImages)[theme],
-  //     className: `hidden-on-${getReverseTheme(theme)}`,
-  //     alt,
-  //   });
-  //   themeImg.setAttribute("part", `img-${theme}`);
-  //   wrapper.appendChild(themeImg);
-  // });
 };
