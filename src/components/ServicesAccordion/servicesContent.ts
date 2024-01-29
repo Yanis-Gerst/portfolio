@@ -10,7 +10,7 @@ export const content: IServiceContent[] = [
     keys: ["Conception de maquette", "Prototypage Figma", "Design System"],
   },
   {
-    title: "Réferencement SEO",
+    title: "Référencement SEO",
     keys: ["Audit SEO"],
   },
 ];

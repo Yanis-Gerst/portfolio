@@ -32,13 +32,13 @@ const inputsConfig: IInputConfig[] = [
   },
   {
     type: "email",
-    label: "Votre Email",
+    label: "Votre email",
     name: "email",
     required: "true",
   },
   {
     type: "text",
-    label: "Votre Message",
+    label: "Votre message",
     name: "message",
     required: "true",
     tag: "textarea",
