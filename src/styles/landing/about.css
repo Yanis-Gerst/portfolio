@@ -1,105 +1,104 @@
-
 #about {
-    margin-top: 13.5rem;
+  margin-top: 13.5rem;
 }
 
-#about h1, #about p {
-    margin-bottom: 1.5rem;
-    width: 100%;
+#about h1,
+#about p {
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .about__localisation {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-
 #google_map {
-    max-width: 340px;
-    height: 170px;
-    margin-bottom: 1rem;
-    border-radius: var(--rounded);
+  max-width: 340px;
+  height: 170px;
+  margin-bottom: 1rem;
+  border-radius: var(--rounded);
 }
 
 .about_bento {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(2, 46px);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(2, 46px);
+  gap: 12px;
 }
 
 .bento__empty-square {
-    background-color: var(--background-secondary);
-    border-radius: var(--rounded);
-    width: 100%;
-    grid-column: span 2;
-    grid-row: span 2;
+  background-color: var(--background-secondary);
+  border-radius: var(--rounded);
+  width: 100%;
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 .bento__tools-icon {
-    background-color: var(--background-secondary);
-    border-radius: var(--rounded);
-    width: 100%;
-    display: grid;
-    place-items: center;
+  background-color: var(--background-secondary);
+  border-radius: var(--rounded);
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 
 .bento__tools-icon:first-of-type img {
-    height: 24px;
-    width: auto;
+  height: 24px;
+  width: auto;
 }
 .bento__tools-icon img {
-    width: 24px;
+  width: 24px;
 }
 
-.gmnoprint, .gm-style-cc {
-    display: none;
+.gmnoprint,
+.gm-style-cc {
+  display: none;
 }
 
 .social-link-wrapper img {
-    width: 64px;
-    height: 64px;
+  width: 64px;
+  height: 64px;
 }
 
 @media screen and (min-width: 1050px) {
-    #about {
-        max-width: 980px;
-        display: flex;
-        gap: 4rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 16rem;
-    }
+  #about {
+    max-width: 980px;
+    display: flex;
+    gap: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16rem;
+  }
 
-    #about h1 {
-        font-size: 4rem;
-    }
+  #about h1 {
+    font-size: 4rem;
+  }
 
-    .about__text {
-        max-width: 450px;
-    }
+  .about__text {
+    max-width: 450px;
+  }
 
-    .about__r-side-desk {
-        display: flex;
-        flex-direction: column;
-    }
+  .about__r-side-desk {
+    display: flex;
+    flex-direction: column;
+  }
 
-    #google_map {
-        min-width: 500px;
-        height: 245px;
-        flex-basis: 60%;
-    }
+  #google_map {
+    min-width: 500px;
+    height: 245px;
+  }
 
-    .about_bento {
-        flex-basis: 40%;
-        grid-template-rows: repeat(2, minmax(64px, 1fr));
-    }
+  .about_bento {
+    flex-basis: 40%;
+    grid-template-rows: repeat(2, minmax(64px, 1fr));
+  }
 
-    .bento__tools-icon:first-of-type img {
-        height: 32px;
-        width: auto;
-    }
+  .bento__tools-icon:first-of-type img {
+    height: 32px;
+    width: auto;
+  }
 
-    .bento__tools-icon img {
-        width: 32px;
-    }
+  .bento__tools-icon img {
+    width: 32px;
+  }
 }
