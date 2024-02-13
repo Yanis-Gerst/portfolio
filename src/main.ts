@@ -17,10 +17,12 @@ import notFoundPageCSS from "./styles/notFound/notFound.css?inline";
 import { inject } from "@vercel/analytics";
 import ServicesAccordion from "./components/ServicesAccordion/ServicesAccordion.ts";
 import ProjectShots from "./components/ProjectShots/ProjectShots.ts";
+import { emailInit } from "./utils/mail.ts";
 
 export const appId = "app";
 export const themes: ReadonlyArray<Themes> = ["light", "dark"] as const;
 inject();
+emailInit();
 
 const projectDetails = {
   html: detailsPageHTML,

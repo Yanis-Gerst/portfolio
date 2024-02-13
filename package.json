@@ -20,6 +20,7 @@
     "vitest": "^0.34.1"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.1.0",
     "@googlemaps/js-api-loader": "^1.16.2",
     "@vercel/analytics": "^1.1.1",
     "gsap": "^3.12.2",

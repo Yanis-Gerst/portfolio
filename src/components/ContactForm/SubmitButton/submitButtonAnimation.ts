@@ -12,7 +12,6 @@ const getButtonTextContainer = (submitButton: HTMLButtonElement) => {
 };
 
 export const pendingAnimation = (submitButton: HTMLButtonElement) => {
-  console.log("Yo");
   const buttonTextContainer = getButtonTextContainer(submitButton);
   const sendingParagraph = buttonTextContainer[1];
 
