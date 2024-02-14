@@ -103,11 +103,11 @@ export default {
       "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et créer ma petite histoire",
     introduction:
       "\n" +
-      "Pizza Legend est un jeu qui s'inspire du système de combat de Pokémon, avec donc la possibilité d'avoir une équipe de pizza. Contrairement, on peut fabriquer les pizzas et non pas les capturer et on retrouve un système de tour par tour avec des pizzas de différents types. \n" +
+      "Pizza Legend est un jeu qui s'inspire du système de combat de Pokémon, offrant ainsi la possibilité d'avoir une équipe de pizzas. Contrairement à Pokémon, on peut fabriquer les pizzas plutôt que les capturer, et le jeu propose un système de tour par tour avec des pizzas de différents types.\n" +
       "\n" +
-      "Dans ce projet, j'ai repris les assets et la base de code écrit par Drew Conley puis j'ai rajouté des fonctionnalités et remixer à ma propre sauce. En ajoutant le système de type, en faisant un système de cinématique, en refaisant les séquence de mouvements de PNJ, en ajoutant une nouvelle pizza dans le jeu, et plus encore.\n" +
+      "Dans ce projet, j'ai utilisé les assets et la base de code initialement écrits par Drew Conley, puis j'ai ajouté des fonctionnalités et remixé le tout à ma manière. J'ai introduit un système de types, créé un système de cinématique, refait les séquences de mouvements des PNJ, ajouté une nouvelle pizza dans le jeu, et bien plus encore.\n" +
       "\n" +
-      "La stack technique est très simple, du pur VanillaJs et le rendu du jeu est fait avec les canvas HTML\n.",
+      "La stack technique est très simple, utilisant uniquement du pur VanillaJS, et le rendu du jeu est réalisé avec les balises canvas HTML.\n",
     techTags: ["HTML", "CSS", "VanillaJS"],
     appImg: {
       all: pizzaLegendImg,
@@ -131,7 +131,7 @@ export default {
     resume:
       "Une implémentation de la landing page de Qovery avec l'ajout d'animations",
     introduction:
-      "Ce projet était un défi à réaliser en 6 heures et a été une réussite, impliquant la création d'une interface respectant les principes du design et capable de s'adapter à toute taille d'écran.",
+      "Ce projet était un défi à réaliser en 6 heures et a été une réussite, impliquant la création d'une interface respectant les principes du design et capable de s'adapter à toutes les tailles d'écran.",
     techTags: ["HTML", "CSS", "VanillaJS"],
     appImg: {
       alt: "Hero header de qovery",
