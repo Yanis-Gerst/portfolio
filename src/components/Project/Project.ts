@@ -4,11 +4,7 @@ import {
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
 import projectData from "../../../data/projectDetails.ts";
-import {
-  toKebabCase,
-  renderTags,
-  findElementOrThrowError,
-} from "../../utils/utils.ts";
+import { renderTags, findElementOrThrowError } from "../../utils/utils.ts";
 import { IProjectData, IProjectName } from "../../types/types.ts";
 import { renderAppImg } from "../../utils/renderingMethods.ts";
 import { DisplayShots } from "./DisplayShots.ts";
