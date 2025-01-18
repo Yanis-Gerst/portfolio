@@ -1,176 +1,174 @@
 @import "src/styles/tags.css";
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 h1 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-    font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 p {
-    margin: 0
+  margin: 0;
 }
 
 .project {
-    margin-bottom: 8rem;
-    opacity: 0;
+  margin-bottom: 8rem;
+  opacity: 0;
+}
+
+.project:last-of-type {
+  margin-bottom: 6rem;
 }
 
 .project--visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 .project-img-gray {
-    filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 #project-template a {
-    font-size: 2rem;
-    margin-bottom: .5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .intro-paragraph-wrapper {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .project .tag-wrapper {
-    margin-bottom: 1.5rem;
-
+  margin-bottom: 1.5rem;
 }
 
 .project__link {
-    display: flex;
-    gap: 0.25rem;
-    align-items: flex-end;
-    cursor: pointer;
+  display: flex;
+  gap: 0.25rem;
+  align-items: flex-end;
+  cursor: pointer;
 }
 
 .project__link svg {
-    width: 8px;
-    height: 8px;
-    transform: translateY(-100%);
-    transition: transform .3s ease-out;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-out;
 }
 
-
 .project__link--hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .project__link--hover svg {
-    transform: translateY(-200%) translateX(2px);
+  transform: translateY(-200%) translateX(2px);
 }
 
 .project__link--hover path {
-    stroke: var(--primary-color);
+  stroke: var(--primary-color);
 }
 
-
 .project--visible .project__link {
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
 }
 
 .project--visible .intro-paragraph-wrapper {
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 150ms;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  animation-delay: 150ms;
 }
 
 .project--visible .tags-list {
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 200ms;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  animation-delay: 200ms;
 }
 
 .project--visible .project__img {
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 250ms;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  animation-delay: 250ms;
 }
-
 
 .project__intro {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-
 
 svg path {
-    stroke: var(--content);
+  stroke: var(--content);
 }
 
-
 @media screen and (min-width: 1050px) {
-    #project {
-        display: flex;
-        flex-direction: column;
-        max-width: 980px;
-        gap: 8rem;
-        margin: 0 auto;
-    }
+  #project {
+    display: flex;
+    flex-direction: column;
+    max-width: 980px;
+    gap: 8rem;
+    margin: 0 auto;
+  }
 
-    .project {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 4rem;
-    }
+  .project {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 4rem;
+  }
 
-    .project__link svg {
-        transform: translateY(-130%) scale(2);
-    }
+  .project__link svg {
+    transform: translateY(-130%) scale(2);
+  }
 
-    .project__link--hover svg {
-        transform: translateY(-230%) translateX(2px) scale(2);
-    }
-    
-    .project__r-side-desk {
-        width: 351px;
-    }
+  .project__link--hover svg {
+    transform: translateY(-230%) translateX(2px) scale(2);
+  }
 
-    .project p {
-        margin-bottom: 1.5rem;
-    }
+  .project__r-side-desk {
+    width: 351px;
+  }
 
-    .project__img {
-        max-width: 560px;
-    }
+  .project p {
+    margin-bottom: 1.5rem;
+  }
 
-    .project .tag-wrapper {
-        margin-bottom: 0;
-    }
+  .project__img {
+    max-width: 560px;
+  }
 
-    .project--visible .project__link {
-        animation-delay: 150ms;
-    }
+  .project .tag-wrapper {
+    margin-bottom: 0;
+  }
 
-    .project--visible .intro-paragraph-wrapper {
-        animation-delay: 200ms;
-    }
+  .project--visible .project__link {
+    animation-delay: 150ms;
+  }
 
-    .project--visible .tags-list {
-        animation-delay: 250ms;
-    }
+  .project--visible .intro-paragraph-wrapper {
+    animation-delay: 200ms;
+  }
 
-    h1 {
-        font-size: 2rem;
-    }
+  .project--visible .tags-list {
+    animation-delay: 250ms;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        transform: translateX(10%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

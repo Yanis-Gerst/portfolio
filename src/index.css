@@ -5,93 +5,101 @@
 @import "styles/customCursor.css";
 
 :root {
-    --rounded: 0.5rem;
+  --rounded: 0.5rem;
 }
 
 #app {
-    position: relative;
+  position: relative;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 [data-theme="light"] {
-    --primary-color: #6880FF;
-    --accent-primary-color: #3450E0;
-    --background-main: #FDFDFD;
-    --content: #121212;
-    --secondary-content: #555555;
-    --background-secondary: #F3F3F3;
+  --primary-color: #6880ff;
+  --accent-primary-color: #3450e0;
+  --background-main: #fdfdfd;
+  --content: #121212;
+  --secondary-content: #555555;
+  --background-secondary: #f3f3f3;
 }
-
 
 [data-theme="dark"] {
-    --primary-color: #5772FF;
-    --accent-primary-color: #568cee;
-    --background-main: #121212;
-    --content: rgb(255, 255, 255, 0.87);
-    --secondary-content: rgba(211, 211, 211, 0.87);
-    --background-secondary: #202020;
+  --primary-color: #5772ff;
+  --accent-primary-color: #568cee;
+  --background-main: #121212;
+  --content: rgb(255, 255, 255, 0.87);
+  --secondary-content: rgba(211, 211, 211, 0.87);
+  --background-secondary: #202020;
 }
-
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-html, body {
-    position: relative;
-    overflow-x: hidden;
+html,
+body {
+  position: relative;
+  overflow-x: hidden;
 }
 
 body {
-    box-sizing: border-box;
-    font-family: "Satoshi-Variable", serif;
-    font-size: 16px;
-    margin: 0;
-    background-color: var(--background-main);
-    color: var(--content);
-    -webkit-font-smoothing: antialiased;
-    isolation: isolate;
+  box-sizing: border-box;
+  font-family: "Satoshi-Variable", serif;
+  font-size: 16px;
+  margin: 0;
+  background-color: var(--background-main);
+  color: var(--content);
+  -webkit-font-smoothing: antialiased;
+  isolation: isolate;
 }
 
-
 h1 {
-    font-weight: bold;
-    font-size: 35px;
-    margin: 0;
+  font-weight: bold;
+  font-size: 35px;
+  margin: 0;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .custom-header__hamburger-menu {
-    position: absolute;
-    inset: 0;
-    background-color: var(--background-secondary);
-    transition: transform 0.3s;
-    transition-timing-function: cubic-bezier(0.5, 0, 0.58, 0.01);
-    transform: translateX(100%);
-
+  position: absolute;
+  inset: 0;
+  background-color: var(--background-secondary);
+  transition: transform 0.3s;
+  transition-timing-function: cubic-bezier(0.5, 0, 0.58, 0.01);
+  transform: translateX(100%);
 }
 
 .custom-header__hamburger-menu--open {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
+.little-project__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  margin-bottom: 8rem;
+}
 
 @media screen and (max-width: 1050px) {
-    .hidden-on-mobile {
-        display: none;
-    }
+  .hidden-on-mobile {
+    display: none;
+  }
 }
 
-
 @media screen and (min-width: 1050px) {
-    #app {
-        max-width: none;
-    }
+  #app {
+    max-width: none;
+  }
+
+  .little-project__container {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12rem;
+  }
 }

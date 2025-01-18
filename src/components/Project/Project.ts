@@ -3,7 +3,6 @@ import {
   createShadowDomWithStyle,
 } from "../../utils/domManipulation.ts";
 import style from "./style.css?inline";
-import { route } from "../../script/router.ts";
 import projectData from "../../../data/projectDetails.ts";
 import {
   toKebabCase,
@@ -16,7 +15,7 @@ import { DisplayShots } from "./DisplayShots.ts";
 
 type IProjectPreview = Omit<
   IProjectData,
-  "screenshots" | "introduction" | "link" | "date"
+  "screenshots" | "introduction" | "date"
 >;
 
 export default class Project extends HTMLElement {
@@ -41,15 +40,16 @@ export default class Project extends HTMLElement {
       className: "project__r-side-desk",
     });
 
-    const anchorLink = `/${toKebabCase(this.name)}`;
+    const anchorLink = this.projectData.link;
     const anchorElt = createElementWithAttribute("a", {
       className: "project__link",
       href: anchorLink,
       toString: anchorLink,
     });
-    anchorElt.addEventListener("click", (e) =>
-      route(e as MouseEvent & { currentTarget: HTMLAnchorElement })
-    );
+    console.log(anchorElt);
+    // anchorElt.addEventListener("click", (e) =>
+    //   route(e as MouseEvent & { currentTarget: HTMLAnchorElement })
+    // );
 
     const title = document.createElement("h1");
     title.textContent = this.projectData.title;
@@ -125,6 +125,7 @@ export default class Project extends HTMLElement {
       resume: project.resume,
       techTags: project.techTags,
       appImg: project.appImg,
+      link: project.link,
     };
   }
 

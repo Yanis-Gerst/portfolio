@@ -9,9 +9,10 @@ export class GoogleMaps implements IMaps {
   position: GeographicPosition;
   theme: Themes;
   marker?: IMarker;
-  static APIKEY = "AIzaSyAUDYHMzE-6z-TRTNtUrCYv7wjm23qO2Wg";
+  static APIKEY = "AIzaSyD73E9JUwFrEDoAuaaaa5928rkd81rmIIs";
   map: google.maps.Map | null;
   constructor(config: Omit<IMaps, "setup">) {
+    console.log("Setup", GoogleMaps.APIKEY);
     this.divId = config.divId;
     this.divElement = this.getDivIdElement();
     this.position = config.position;

@@ -1,17 +1,15 @@
-
-
 .custom-cursor {
-    position: fixed;
-    pointer-events: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: var(--content);
-    transition: transform 350ms ease, background-color 50ms ease-out, height 350ms ease;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+  position: fixed;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--content);
+  transition: transform 350ms ease, background-color 50ms ease-out,
+    height 350ms ease;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
-
 
 .custom-cursor--hover {
   mix-blend-mode: difference;
@@ -27,7 +25,7 @@
 
 .custom-cursor--hover-emoji {
   mix-blend-mode: normal;
-  background-color: rgba(104, 128, 255, .5);
+  background-color: rgba(104, 128, 255, 0.5);
   transform: translate(-100%, -100%) scale(2.5);
 }
 
@@ -49,6 +47,10 @@
 
 .custom-cursor--hover-wave::after {
   background-image: url("/Wave\ emoji.png");
+}
+
+.custom-cursor--hover-github::after {
+  background-image: url("/github.png");
 }
 
 @media screen and (max-width: 1050px) {

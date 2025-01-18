@@ -17,6 +17,7 @@ import notFoundPageCSS from "./styles/notFound/notFound.css?inline";
 import { inject } from "@vercel/analytics";
 import ServicesAccordion from "./components/ServicesAccordion/ServicesAccordion.ts";
 import ProjectShots from "./components/ProjectShots/ProjectShots.ts";
+import LittleProject from "./components/LittleProject/LittleProject.ts";
 import { emailInit } from "./utils/mail.ts";
 
 export const appId = "app";
@@ -65,6 +66,7 @@ customElements.define("theme-button", ThemeButton);
 customElements.define("social-link", socialLink);
 customElements.define("service-accordion", ServicesAccordion);
 customElements.define("project-shots", ProjectShots);
+customElements.define("little-project", LittleProject);
 
 handleLocation().then(() => {
   setupCustomCursor();

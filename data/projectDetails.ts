@@ -23,6 +23,11 @@ import usageQovery from "../src/assets/qovery/usage.png";
 import keysQovery1 from "../src/assets/qovery/keys1.png";
 import keysQovery2 from "../src/assets/qovery/keys2.png";
 
+import heroFolio from "../src/assets/mathieu-Folio/home.png";
+import projectFolio from "../src/assets/mathieu-Folio/Project.png";
+import serviceFolio from "../src/assets/mathieu-Folio/Service.png";
+import contactFolio from "../src/assets/mathieu-Folio/Contact.png";
+
 export default {
   things: {
     title: "Things 3",
@@ -60,7 +65,7 @@ export default {
     title: "UniNotes",
     link: "",
     resume:
-      "Un Drive dédié aux étudiants d'AMU afin de partager des fiches de révisions, d'exercices et de corrections",
+      "A platform dedicated to AMU students for sharing revision notes, exercises, and answer keys.",
     introduction:
       "Ce projet permet aux étudiants de regarder les fiches de révisions et exercices de leurs camarades de classe ainsi que les autres filières que propose l'université.",
     techTags: ["Next.Js", "Typescript", "Sass", "MongoDB"],
@@ -99,8 +104,7 @@ export default {
   pizzaLegend: {
     title: "Pizza Legend",
     link: "https://yanis-gerst.github.io/Pizza-Legend/",
-    resume:
-      "Mon premier projet basé sur le travail de Drew Conley. Je me suis amusé à rajouter des fonctionnalités et créer ma petite histoire",
+    resume: "A Pokémon-like game with PIZZA beware, it's challenging!",
     introduction:
       "\n" +
       "Pizza Legend est un jeu qui s'inspire du système de combat de Pokémon, offrant ainsi la possibilité d'avoir une équipe de pizzas. Contrairement à Pokémon, on peut fabriquer les pizzas plutôt que les capturer, et le jeu propose un système de tour par tour avec des pizzas de différents types.\n" +
@@ -128,8 +132,7 @@ export default {
   qovery: {
     title: "Qovery",
     link: "https://qovery-implementation.vercel.app/",
-    resume:
-      "Une implémentation de la landing page de Qovery avec l'ajout d'animations",
+    resume: "A classic, simple implementation of Qovery's old landing page.",
     introduction:
       "Ce projet était un défi à réaliser en 6 heures et a été une réussite, impliquant la création d'une interface respectant les principes du design et capable de s'adapter à toutes les tailles d'écran.",
     techTags: ["HTML", "CSS", "VanillaJS"],
@@ -160,6 +163,41 @@ export default {
           {
             src: keysQovery2,
             alt: "Les 2 premières fonctionnalités clés de qovery ainsi que leurs partenaires",
+          },
+        ],
+      },
+    ],
+  },
+  matFolio: {
+    title: "Enginner Folio",
+    link: "https://mathieu-gerst-folio.vercel.app/",
+    resume:
+      "Code and design a portfolio from scratch for a mechanical engineer. ",
+    introduction: "",
+    techTags: ["AstroJS", "TailwindCSS"],
+    appImg: {
+      alt: "Hero header",
+      all: heroFolio,
+    },
+    date: "Décembre 2020",
+    screenshots: [
+      {
+        shots: [
+          {
+            src: heroFolio,
+            alt: "Hero header de qovery",
+          },
+          {
+            src: projectFolio,
+            alt: "La section qui explique comment fonctionne qovery",
+          },
+          {
+            src: serviceFolio,
+            alt: "La section qui montre un exemple d'utilisation de qovery",
+          },
+          {
+            src: contactFolio,
+            alt: "Les 2 premières fonctionnalités clés de qovery",
           },
         ],
       },
