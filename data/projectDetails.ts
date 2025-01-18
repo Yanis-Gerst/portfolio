@@ -169,7 +169,7 @@ export default {
     ],
   },
   matFolio: {
-    title: "Enginner Folio",
+    title: "Engineer Folio",
     link: "https://mathieu-gerst-folio.vercel.app/",
     resume:
       "Code and design a portfolio from scratch for a mechanical engineer. ",
