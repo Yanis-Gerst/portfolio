@@ -26,19 +26,19 @@ type IInputConfig = {
 const inputsConfig: IInputConfig[] = [
   {
     type: "text",
-    label: "Votre nom",
+    label: "Your name",
     name: "name",
     required: "true",
   },
   {
     type: "email",
-    label: "Votre email",
+    label: "Your email",
     name: "email",
     required: "true",
   },
   {
     type: "text",
-    label: "Votre message",
+    label: "Your message",
     name: "message",
     required: "true",
     tag: "textarea",
@@ -63,7 +63,7 @@ export default class ContactForm extends HTMLElement {
     });
 
     const sectionTitle = createElementWithAttribute("h1", {});
-    sectionTitle.textContent = "Contactez moi";
+    sectionTitle.textContent = "Contact me";
 
     const personalEmailWrapper = createElementWithAttribute("div", {
       className: "personal-mail-wrapper",

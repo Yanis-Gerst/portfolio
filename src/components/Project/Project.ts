@@ -42,7 +42,7 @@ export default class Project extends HTMLElement {
       href: anchorLink,
       toString: anchorLink,
     });
-    console.log(anchorElt);
+
     // anchorElt.addEventListener("click", (e) =>
     //   route(e as MouseEvent & { currentTarget: HTMLAnchorElement })
     // );
