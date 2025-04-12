@@ -1,3 +1,7 @@
+html {
+  cursor: none;
+}
+
 .custom-cursor {
   position: fixed;
   pointer-events: none;

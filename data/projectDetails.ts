@@ -104,7 +104,7 @@ export default {
   pizzaLegend: {
     title: "Pizza Legend",
     link: "https://yanis-gerst.github.io/Pizza-Legend/",
-    resume: "A Pokémon-like game with PIZZA beware, it's challenging!",
+    resume: "A Pokémon-like game featuring pizza. Beware, it's challenging!",
     introduction:
       "\n" +
       "Pizza Legend est un jeu qui s'inspire du système de combat de Pokémon, offrant ainsi la possibilité d'avoir une équipe de pizzas. Contrairement à Pokémon, on peut fabriquer les pizzas plutôt que les capturer, et le jeu propose un système de tour par tour avec des pizzas de différents types.\n" +
@@ -132,7 +132,8 @@ export default {
   qovery: {
     title: "Qovery",
     link: "https://qovery-implementation.vercel.app/",
-    resume: "A classic, simple implementation of Qovery's old landing page.",
+    resume:
+      "Recreated a simple and classic version of Qovery's previous landing page to practice clean UI implementation",
     introduction:
       "Ce projet était un défi à réaliser en 6 heures et a été une réussite, impliquant la création d'une interface respectant les principes du design et capable de s'adapter à toutes les tailles d'écran.",
     techTags: ["HTML", "CSS", "VanillaJS"],
@@ -171,8 +172,7 @@ export default {
   matFolio: {
     title: "Engineer Folio",
     link: "https://mathieu-gerst-folio.vercel.app/",
-    resume:
-      "Code and design a portfolio from scratch for a mechanical engineer. ",
+    resume: "Build a custom portfolio for a mechanical engineer. ",
     introduction: "",
     techTags: ["AstroJS", "TailwindCSS"],
     appImg: {

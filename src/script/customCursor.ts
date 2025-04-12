@@ -8,8 +8,7 @@ const followMouseCursor = (e: MouseEvent) => {
   gsap.to(cursor, {
     top: mouseY + "px",
     left: mouseX + "px",
-    duration: 1,
-    ease: "elastic.out",
+    duration: 0,
   });
 };
 
